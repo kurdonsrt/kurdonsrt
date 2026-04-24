@@ -1,0 +1,5357 @@
+<!DOCTYPE html>
+<html lang="ckb" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>kurd on srt | Demo زیندوو</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#FFD700">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="kurd on srt">
+<meta name="mobile-web-app-capable" content="yes">
+<link href="https://fonts.googleapis.com/css2?family=Rabar_021&family=Vazirmatn:wght@400;500;600;700;800;900&family=Cairo:wght@400;600;700;800;900&family=Bebas+Neue&family=Cinzel:wght@600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/gh/rastko/kurdish-fonts@main/NizarSorani/NizarSorani.css" rel="stylesheet">
+<style>
+/* === 7 Color Themes === */
+:root {
+  --gold: #FFD700;
+  --gold-dim: #B8860B;
+  --black: #000000;
+  --black-soft: #0a0a0a;
+  --black-mid: #141414;
+  --white: #ffffff;
+  --accent: #FFA500;
+  --success: #16a34a;
+  --danger: #dc2626;
+  --text-primary: #ffffff;
+  --text-secondary: rgba(255, 255, 255, 0.85);
+  --text-muted: rgba(255, 255, 255, 0.65);
+}
+
+/* Theme: Red */
+body.theme-red {
+  --gold: #dc2626;
+  --gold-dim: #7f1d1d;
+  --accent: #ef4444;
+}
+
+/* Theme: Green */
+body.theme-green {
+  --gold: #16a34a;
+  --gold-dim: #14532d;
+  --accent: #22c55e;
+}
+
+/* Theme: Purple */
+body.theme-purple {
+  --gold: #9333ea;
+  --gold-dim: #581c87;
+  --accent: #a855f7;
+}
+
+/* Theme: Pink */
+body.theme-pink {
+  --gold: #db2777;
+  --gold-dim: #831843;
+  --accent: #ec4899;
+}
+
+/* Theme: Orange */
+body.theme-orange {
+  --gold: #ea580c;
+  --gold-dim: #7c2d12;
+  --accent: #f97316;
+}
+
+/* Theme: White */
+body.theme-white {
+  --gold: #ffffff;
+  --gold-dim: #a3a3a3;
+  --accent: #f5f5f5;
+  --black-soft: #1a1a1a;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: var(--black);
+  color: var(--white);
+  font-family: 'Vazirmatn', 'Cairo', sans-serif;
+  font-weight: 500;
+  min-height: 100vh;
+  overflow-x: hidden;
+  letter-spacing: 0.2px;
+}
+
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: var(--black); }
+::-webkit-scrollbar-thumb { background: var(--gold-dim); border-radius: 4px; }
+
+/* === Navbar === */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  padding: 14px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(10, 10, 10, 0.85);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 215, 0, 0.1);
+}
+
+.nav-left { display: flex; align-items: center; gap: 30px; }
+
+.logo { display: flex; align-items: center; gap: 10px; cursor: pointer; }
+
+.logo-icon {
+  width: 36px; height: 36px;
+  background: linear-gradient(135deg, var(--gold), var(--gold-dim));
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+}
+
+.logo-text {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 18px;
+  letter-spacing: 2px;
+  font-weight: 900;
+  background: linear-gradient(90deg, var(--gold), #fff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+  white-space: nowrap;
+}
+
+.nav-links { display: flex; gap: 20px; }
+
+.nav-links a {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 13px;
+  cursor: pointer;
+  transition: color 0.3s;
+  text-decoration: none;
+}
+
+.nav-links a:hover, .nav-links a.active { color: var(--gold); }
+
+.nav-right { display: flex; align-items: center; gap: 12px; }
+
+.coin-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: rgba(255, 215, 0, 0.1);
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  border-radius: 50px;
+  font-size: 12px;
+  color: var(--gold);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.coin-icon {
+  width: 18px; height: 18px;
+  background: linear-gradient(135deg, var(--gold), var(--accent));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--black);
+  font-size: 10px;
+  font-weight: 900;
+}
+
+.premium-badge {
+  padding: 4px 10px;
+  background: linear-gradient(135deg, var(--gold), var(--accent));
+  color: var(--black);
+  border-radius: 50px;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--gold), var(--gold-dim));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--black);
+  font-weight: 700;
+  cursor: pointer;
+  border: 2px solid rgba(255, 215, 0, 0.3);
+}
+
+.icon-btn {
+  width: 34px;
+  height: 34px;
+  background: rgba(255, 215, 0, 0.1);
+  border: 1px solid rgba(255, 215, 0, 0.2);
+  border-radius: 50%;
+  color: var(--gold);
+  cursor: pointer;
+  font-size: 14px;
+}
+
+/* === Demo Banner === */
+.demo-banner {
+  background: linear-gradient(90deg, #FFD700, #FFB800);
+  color: var(--black);
+  padding: 8px 20px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/* === Pages === */
+.page { display: none; min-height: calc(100vh - 60px); }
+.page.active { display: block; }
+
+/* === Login === */
+.login-page {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: 
+    radial-gradient(ellipse at 20% 30%, rgba(255, 215, 0, 0.08) 0%, transparent 50%),
+    var(--black);
+}
+
+.brand-side {
+  padding: 50px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.hero-content { max-width: 500px; }
+
+.premium-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: rgba(255, 215, 0, 0.08);
+  border: 1px solid rgba(255, 215, 0, 0.2);
+  border-radius: 50px;
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: var(--gold);
+  margin-bottom: 30px;
+  text-transform: uppercase;
+}
+
+.hero-title {
+  font-family: 'Cinzel', 'Vazirmatn', serif;
+  font-size: 68px;
+  line-height: 1;
+  font-weight: 900;
+  margin-bottom: 24px;
+  letter-spacing: -1px;
+  color: #fff;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+}
+
+.hero-title .accent {
+  color: var(--gold);
+  font-family: 'Cinzel', serif;
+  font-style: italic;
+  font-weight: 700;
+  text-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+}
+
+.hero-subtitle {
+  font-size: 18px;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 500;
+}
+
+.stats {
+  display: flex;
+  gap: 40px;
+  padding-top: 30px;
+  border-top: 1px solid rgba(255, 215, 0, 0.1);
+}
+
+.stat-number {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 36px;
+  color: var(--gold);
+  letter-spacing: 1px;
+}
+
+.stat-label {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.7);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.form-side {
+  padding: 50px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-card {
+  width: 100%;
+  max-width: 460px;
+  background: linear-gradient(145deg, rgba(28, 28, 28, 0.8), rgba(20, 20, 20, 0.9));
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 215, 0, 0.15);
+  border-radius: 20px;
+  padding: 36px;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+}
+
+.tabs {
+  display: flex;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 12px;
+  padding: 4px;
+  margin-bottom: 28px;
+  position: relative;
+}
+
+.tab {
+  flex: 1;
+  padding: 12px 18px;
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: inherit;
+  position: relative;
+  z-index: 2;
+  transition: color 0.3s;
+}
+
+.tab.active { color: var(--black); }
+
+.tab-indicator {
+  position: absolute;
+  top: 4px;
+  bottom: 4px;
+  width: calc(50% - 4px);
+  background: linear-gradient(135deg, var(--gold), var(--accent));
+  border-radius: 8px;
+  transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 20px rgba(255, 215, 0, 0.4);
+  right: 4px;
+}
+
+.tab-indicator.login { right: calc(50% + 0px); }
+
+.form-title {
+  font-family: 'Cinzel', 'Vazirmatn', serif;
+  font-size: 32px;
+  font-weight: 800;
+  margin-bottom: 8px;
+  color: #fff;
+  letter-spacing: 0.5px;
+}
+
+.form-subtitle {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.75);
+  margin-bottom: 24px;
+  font-weight: 500;
+}
+
+.form-group { margin-bottom: 16px; }
+
+.name-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 12px;
+  color: var(--gold);
+  margin-bottom: 8px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.form-group input, .form-group textarea, .form-group select {
+  width: 100%;
+  padding: 13px 15px;
+  background: rgba(0, 0, 0, 0.5);
+  border: 1.5px solid rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
+  color: #fff;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 500;
+  direction: rtl;
+  text-align: right;
+  transition: all 0.3s;
+}
+
+.form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+  outline: none;
+  border-color: var(--gold);
+  background: rgba(0, 0, 0, 0.7);
+  box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.15);
+}
+
+.btn {
+  padding: 13px 26px;
+  border: none;
+  border-radius: 10px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  letter-spacing: 0.3px;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--gold), var(--accent));
+  color: #000;
+  font-weight: 800;
+  box-shadow: 0 8px 30px rgba(255, 215, 0, 0.35);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(255, 215, 0, 0.5);
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.btn-block { width: 100%; justify-content: center; }
+
+.demo-hint {
+  margin-top: 20px;
+  padding: 12px;
+  background: rgba(255, 215, 0, 0.08);
+  border: 1px dashed rgba(255, 215, 0, 0.3);
+  border-radius: 10px;
+  font-size: 11px;
+  color: rgba(255, 215, 0, 0.9);
+  text-align: center;
+}
+
+/* === Home === */
+.hero-section {
+  position: relative;
+  min-height: 75vh;
+  display: flex;
+  align-items: flex-end;
+  padding: 60px 40px;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.4);
+  transition: background-image 1s ease;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: 
+    linear-gradient(to top, var(--black) 0%, transparent 50%),
+    linear-gradient(to right, var(--black) 0%, rgba(10,10,10,0.3) 50%, transparent 100%);
+}
+
+.hero-text {
+  position: relative;
+  z-index: 2;
+  max-width: 600px;
+}
+
+.hero-pill {
+  display: inline-block;
+  padding: 6px 14px;
+  background: rgba(255, 215, 0, 0.15);
+  border: 1px solid rgba(255, 215, 0, 0.4);
+  border-radius: 50px;
+  font-size: 11px;
+  color: var(--gold);
+  letter-spacing: 2px;
+  margin-bottom: 16px;
+}
+
+.hero-text h1 {
+  font-family: 'Cinzel', 'Vazirmatn', serif;
+  font-size: 64px;
+  line-height: 1;
+  font-weight: 900;
+  margin-bottom: 16px;
+  letter-spacing: -1px;
+  color: #fff;
+  text-shadow: 0 4px 20px rgba(0,0,0,1), 0 2px 8px rgba(0,0,0,0.8);
+}
+
+.hero-meta {
+  display: flex;
+  gap: 14px;
+  margin-bottom: 16px;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.hero-meta .rating { color: var(--gold); font-weight: 700; }
+
+.hero-desc {
+  font-size: 16px;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.95);
+  margin-bottom: 24px;
+  font-weight: 500;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+}
+
+.hero-actions { display: flex; gap: 12px; }
+
+.indicators {
+  position: absolute;
+  bottom: 30px;
+  right: 40px;
+  display: flex;
+  gap: 6px;
+  z-index: 3;
+}
+
+.indicator {
+  width: 25px;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 2px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.indicator.active {
+  background: var(--gold);
+  width: 50px;
+}
+
+/* === Sections === */
+.section {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 30px 30px 10px;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.section-title {
+  font-family: 'Cinzel', 'Vazirmatn', serif;
+  font-size: 26px;
+  font-weight: 800;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  letter-spacing: 0.5px;
+}
+
+.see-all { color: var(--gold); font-size: 12px; cursor: pointer; }
+
+.movies-row {
+  display: flex;
+  gap: 14px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+  scroll-snap-type: x mandatory;
+}
+
+.movie-card {
+  min-width: 180px;
+  cursor: pointer;
+  scroll-snap-align: start;
+  transition: all 0.3s;
+}
+
+.movie-card:hover { transform: translateY(-6px); }
+
+.card-poster {
+  position: relative;
+  aspect-ratio: 2/3;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #222;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.3s;
+}
+
+.movie-card:hover .card-poster {
+  border-color: var(--gold);
+  box-shadow: 0 15px 30px rgba(255, 215, 0, 0.15);
+}
+
+.card-poster img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+  opacity: 0;
+  transition: opacity 0.3s;
+  display: flex;
+  align-items: flex-end;
+  padding: 12px;
+}
+
+.movie-card:hover .card-overlay { opacity: 1; }
+
+.play-icon {
+  width: 40px;
+  height: 40px;
+  background: var(--gold);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--black);
+  font-size: 16px;
+  margin: 0 auto;
+}
+
+.card-info { padding: 8px 4px 0; }
+
+.card-title {
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #fff;
+  letter-spacing: 0.2px;
+}
+
+.card-meta {
+  display: flex;
+  gap: 6px;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.75);
+  font-weight: 500;
+}
+
+.card-badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 2;
+  padding: 3px 8px;
+  background: var(--gold);
+  color: var(--black);
+  font-size: 9px;
+  border-radius: 5px;
+  font-weight: 700;
+}
+
+/* === Top 10 === */
+.top10-row {
+  display: flex;
+  gap: 14px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+}
+
+.top10-item {
+  display: flex;
+  align-items: center;
+  min-width: 260px;
+  cursor: pointer;
+}
+
+.top10-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 150px;
+  line-height: 0.8;
+  color: var(--black);
+  -webkit-text-stroke: 3px var(--gold);
+  margin-left: -25px;
+  z-index: 0;
+  letter-spacing: -15px;
+}
+
+.top10-poster {
+  width: 130px;
+  aspect-ratio: 2/3;
+  object-fit: cover;
+  border-radius: 8px;
+  z-index: 1;
+  border: 1px solid rgba(255, 215, 0, 0.2);
+}
+
+/* === AI CTA === */
+.ai-cta {
+  max-width: 1400px;
+  margin: 30px auto;
+  padding: 0 30px;
+}
+
+.ai-cta-card {
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 184, 0, 0.03));
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  border-radius: 16px;
+  padding: 20px 26px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.ai-cta-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--gold);
+}
+
+.ai-cta-icon {
+  width: 56px;
+  height: 56px;
+  background: linear-gradient(135deg, var(--gold), var(--accent));
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+}
+
+.ai-cta-text { flex: 1; }
+.ai-cta-text h3 { font-size: 18px; color: var(--gold); margin-bottom: 3px; }
+.ai-cta-text p { font-size: 12px; color: rgba(255, 255, 255, 0.85); }
+
+/* === Genres === */
+.genres-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
+}
+
+.genre-card {
+  padding: 24px 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.genre-card:hover { transform: translateY(-4px); border-color: var(--gold); }
+
+.genre-icon { font-size: 32px; margin-bottom: 8px; }
+.genre-name { font-size: 13px; font-weight: 600; }
+
+/* === Movie Details === */
+.detail-page {
+  direction: rtl;
+}
+
+.detail-hero {
+  position: relative;
+  min-height: 75vh;
+  display: flex;
+  align-items: flex-end;
+  padding: 100px 30px 40px;
+}
+
+.detail-hero-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.4);
+}
+
+.detail-hero-content {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 40px;
+  align-items: end;
+  max-width: 1300px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.detail-poster {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+  border: 1px solid rgba(255, 215, 0, 0.2);
+}
+
+.detail-poster img {
+  width: 100%;
+  display: block;
+  aspect-ratio: 2/3;
+  object-fit: cover;
+}
+
+.detail-info h1 {
+  font-family: 'Cinzel', 'Vazirmatn', serif;
+  font-size: 56px;
+  line-height: 1;
+  font-weight: 900;
+  margin-bottom: 16px;
+  letter-spacing: -2px;
+}
+
+.pill-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.pill {
+  padding: 6px 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  font-size: 12px;
+}
+
+.pill.gold {
+  background: rgba(255, 215, 0, 0.1);
+  border-color: rgba(255, 215, 0, 0.3);
+  color: var(--gold);
+}
+
+.detail-desc {
+  font-size: 15px;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.95);
+  margin-bottom: 22px;
+}
+
+.back-btn {
+  position: absolute;
+  top: 80px;
+  right: 30px;
+  z-index: 10;
+  padding: 8px 14px;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  border-radius: 8px;
+  color: var(--gold);
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 13px;
+}
+
+/* === AI Search === */
+.search-page {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 30px;
+}
+
+.ai-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 26px;
+}
+
+.ai-avatar {
+  width: 56px;
+  height: 56px;
+  background: linear-gradient(135deg, var(--gold), var(--accent));
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
+}
+
+.ai-header h1 {
+  font-family: 'Cinzel', 'Vazirmatn', serif;
+  font-size: 26px;
+  margin-bottom: 4px;
+}
+
+.ai-header h1 .accent { color: var(--gold); font-style: italic; }
+
+.ai-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  background: #22c55e;
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.search-wrapper {
+  background: linear-gradient(145deg, rgba(28,28,28,0.8), rgba(20,20,20,0.9));
+  border: 1px solid rgba(255, 215, 0, 0.2);
+  border-radius: 16px;
+  padding: 16px;
+  margin-bottom: 26px;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(0,0,0,0.4);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 4px 14px 4px 4px;
+}
+
+.search-box input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--white);
+  font-family: inherit;
+  font-size: 14px;
+  padding: 12px 0;
+  direction: rtl;
+}
+
+.voice-btn {
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 215, 0, 0.1);
+  border: 1px solid rgba(255, 215, 0, 0.2);
+  border-radius: 10px;
+  color: var(--gold);
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.voice-btn.recording {
+  background: #ef4444;
+  border-color: #ef4444;
+  color: white;
+  animation: recordPulse 1s infinite;
+}
+
+@keyframes recordPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
+  50% { box-shadow: 0 0 0 10px rgba(239, 68, 68, 0); }
+}
+
+.search-submit {
+  padding: 10px 20px;
+  background: linear-gradient(135deg, var(--gold), var(--accent));
+  border: none;
+  border-radius: 10px;
+  color: var(--black);
+  font-family: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.ai-response {
+  background: linear-gradient(145deg, rgba(255, 215, 0, 0.05), rgba(20,20,20,0.6));
+  border: 1px solid rgba(255, 215, 0, 0.2);
+  border-radius: 16px;
+  padding: 22px;
+  margin-bottom: 26px;
+}
+
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.result-card {
+  background: var(--black-soft);
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  position: relative;
+}
+
+.result-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--gold);
+}
+
+.match-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 10;
+  padding: 4px 10px;
+  background: linear-gradient(135deg, var(--gold), var(--accent));
+  color: var(--black);
+  border-radius: 50px;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+/* === Coin Dashboard === */
+.coin-page {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 30px;
+}
+
+.balance-card {
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.15), rgba(255, 184, 0, 0.05));
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  border-radius: 18px;
+  padding: 24px;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.balance-info { flex: 1; }
+.balance-label {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 4px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.balance-amount {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 60px;
+  color: var(--gold);
+  line-height: 1;
+}
+
+.balance-icon { font-size: 56px; }
+
+.reward-section, .earn-section, .exchange-section {
+  background: linear-gradient(145deg, rgba(28, 28, 28, 0.6), rgba(20, 20, 20, 0.8));
+  border: 1px solid rgba(255, 215, 0, 0.15);
+  border-radius: 14px;
+  padding: 24px;
+  margin-bottom: 20px;
+}
+
+.section-h2 {
+  font-family: 'Cinzel', 'Vazirmatn', serif;
+  font-size: 22px;
+  margin-bottom: 8px;
+  color: var(--gold);
+}
+
+.section-p {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 18px;
+}
+
+.days-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.day-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  padding: 12px 6px;
+  text-align: center;
+}
+
+.day-card.completed {
+  background: rgba(34, 197, 94, 0.1);
+  border-color: rgba(34, 197, 94, 0.3);
+}
+
+.day-card.current {
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(255, 184, 0, 0.05));
+  border-color: var(--gold);
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+}
+
+.day-num { font-size: 10px; color: rgba(255, 255, 255, 0.8); margin-bottom: 4px; }
+.day-icon { font-size: 20px; margin-bottom: 4px; }
+.day-reward { font-family: 'Bebas Neue', sans-serif; font-size: 18px; color: var(--gold); }
+.day-label { font-size: 9px; color: rgba(255, 255, 255, 0.7); }
+
+.earn-grid, .exchange-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 14px;
+}
+
+.earn-card {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 215, 0, 0.15);
+  border-radius: 12px;
+  padding: 18px;
+  text-align: center;
+}
+
+.earn-icon { font-size: 32px; margin-bottom: 10px; }
+.earn-card h3 { font-size: 13px; margin-bottom: 8px; }
+.earn-amount { font-family: 'Bebas Neue', sans-serif; font-size: 22px; color: var(--gold); }
+
+.exchange-card {
+  background: linear-gradient(145deg, rgba(28, 28, 28, 0.8), rgba(20, 20, 20, 0.9));
+  border: 1px solid rgba(255, 215, 0, 0.2);
+  border-radius: 12px;
+  padding: 18px;
+  text-align: center;
+}
+
+.exchange-coins {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 24px;
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+
+.exchange-arrow { font-size: 20px; color: rgba(255, 255, 255, 0.6); margin: 8px 0; }
+.exchange-days { font-size: 14px; color: var(--white); margin-bottom: 14px; font-weight: 600; }
+
+/* === Payment === */
+.payment-page {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 30px;
+}
+
+.payment-hero {
+  text-align: center;
+  padding: 30px 20px 40px;
+}
+
+.payment-hero h1 {
+  font-family: 'Cinzel', 'Vazirmatn', serif;
+  font-size: 48px;
+  font-weight: 900;
+  margin-bottom: 14px;
+  letter-spacing: -2px;
+}
+
+.payment-hero h1 .accent {
+  color: var(--gold);
+  font-style: italic;
+  font-weight: 400;
+}
+
+.plans-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 30px;
+}
+
+.plan-card {
+  background: linear-gradient(145deg, rgba(28,28,28,0.8), rgba(20,20,20,0.9));
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 26px 22px;
+  cursor: pointer;
+  transition: all 0.3s;
+  position: relative;
+}
+
+.plan-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 215, 0, 0.3);
+}
+
+.plan-card.popular {
+  border: 1px solid var(--gold);
+  background: linear-gradient(145deg, rgba(255, 215, 0, 0.1), rgba(20,20,20,0.9));
+}
+
+.popular-tag {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, var(--gold), var(--accent));
+  color: var(--black);
+  padding: 5px 14px;
+  border-radius: 50px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.plan-name {
+  font-family: 'Cinzel', 'Vazirmatn', serif;
+  font-size: 22px;
+  margin-bottom: 8px;
+}
+
+.plan-price-row {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  margin-bottom: 6px;
+}
+
+.plan-price {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 42px;
+  color: var(--gold);
+  line-height: 1;
+}
+
+.plan-currency { font-size: 14px; color: rgba(255, 255, 255, 0.8); }
+
+.plan-features {
+  list-style: none;
+  margin: 16px 0 20px;
+}
+
+.plan-features li {
+  padding: 6px 0;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.plan-btn {
+  width: 100%;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  border-radius: 8px;
+  color: var(--gold);
+  font-family: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.plan-card.popular .plan-btn {
+  background: linear-gradient(135deg, var(--gold), var(--accent));
+  color: var(--black);
+  border: none;
+  font-weight: 700;
+}
+
+/* === Admin Dashboard === */
+.admin-page {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  min-height: calc(100vh - 60px);
+}
+
+.admin-sidebar {
+  background: rgba(20, 20, 20, 0.95);
+  border-left: 1px solid rgba(255, 215, 0, 0.1);
+  padding: 24px 16px;
+}
+
+.admin-sidebar-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 18px;
+  letter-spacing: 3px;
+  color: var(--gold);
+  padding: 0 12px 16px;
+  border-bottom: 1px solid rgba(255, 215, 0, 0.1);
+  margin-bottom: 16px;
+}
+
+.admin-nav-item {
+  display: block;
+  padding: 10px 14px;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  color: rgba(255, 255, 255, 0.85);
+  font-family: inherit;
+  font-size: 13px;
+  text-align: right;
+  cursor: pointer;
+  margin-bottom: 4px;
+  width: 100%;
+}
+
+.admin-nav-item:hover, .admin-nav-item.active {
+  background: rgba(255, 215, 0, 0.1);
+  color: var(--gold);
+  border-color: rgba(255, 215, 0, 0.3);
+}
+
+.admin-content { padding: 26px; }
+
+.admin-content h1 {
+  font-family: 'Cinzel', 'Vazirmatn', serif;
+  font-size: 28px;
+  color: var(--gold);
+  margin-bottom: 22px;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.stat-card {
+  background: linear-gradient(145deg, rgba(28, 28, 28, 0.8), rgba(20, 20, 20, 0.9));
+  border: 1px solid rgba(255, 215, 0, 0.15);
+  border-radius: 14px;
+  padding: 20px;
+}
+
+.stat-icon-lg { font-size: 32px; margin-bottom: 10px; }
+.stat-value {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 36px;
+  color: var(--gold);
+  line-height: 1;
+}
+.stat-label-sm {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.8);
+  margin-top: 4px;
+  letter-spacing: 1px;
+}
+
+.data-table {
+  background: rgba(20, 20, 20, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.data-table table { width: 100%; border-collapse: collapse; }
+
+.data-table th {
+  background: rgba(255, 215, 0, 0.1);
+  color: var(--gold);
+  padding: 12px 16px;
+  text-align: right;
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.data-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  font-size: 13px;
+}
+
+.btn-sm {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 12px;
+}
+
+.btn-success { background: rgba(34, 197, 94, 0.15); color: #22c55e; border: 1px solid rgba(34, 197, 94, 0.3); }
+.btn-danger { background: rgba(239, 68, 68, 0.15); color: #ef4444; border: 1px solid rgba(239, 68, 68, 0.3); }
+
+/* === Video Player === */
+.video-page {
+  background: #000;
+  min-height: calc(100vh - 60px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.video-wrapper {
+  width: 100%;
+  max-width: 1200px;
+  aspect-ratio: 16/9;
+  position: relative;
+  background: #000;
+}
+
+.video-wrapper video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.video-overlay-info {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  padding: 10px 16px;
+  border-radius: 10px;
+  color: var(--gold);
+  font-size: 13px;
+}
+
+/* === Toast === */
+.toast {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%) translateY(100px);
+  background: linear-gradient(135deg, var(--gold), var(--accent));
+  color: var(--black);
+  padding: 14px 26px;
+  border-radius: 50px;
+  font-weight: 700;
+  z-index: 1000;
+  box-shadow: 0 10px 40px rgba(255, 215, 0, 0.4);
+  transition: transform 0.4s ease;
+  font-size: 14px;
+}
+
+.toast.show { transform: translateX(-50%) translateY(0); }
+
+/* === Modal === */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.8);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 500;
+  padding: 20px;
+}
+
+.modal-overlay.show { display: flex; }
+
+.modal {
+  background: linear-gradient(145deg, rgba(28,28,28,0.95), rgba(20,20,20,0.98));
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  border-radius: 16px;
+  padding: 30px;
+  max-width: 500px;
+  width: 100%;
+  text-align: center;
+}
+
+.modal h2 {
+  font-family: 'Cinzel', 'Vazirmatn', serif;
+  font-size: 26px;
+  color: var(--gold);
+  margin-bottom: 12px;
+}
+
+.modal p { font-size: 14px; color: rgba(255, 255, 255, 0.9); margin-bottom: 20px; line-height: 1.7; }
+
+.modal .modal-actions { display: flex; gap: 10px; justify-content: center; }
+
+/* === Theme & Language Switcher (Right side - User's side in RTL) === */
+.settings-panel {
+  position: fixed;
+  bottom: 90px;
+  right: 20px;
+  z-index: 200;
+}
+
+.settings-toggle {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--gold), var(--accent));
+  border: none;
+  color: var(--black);
+  font-size: 20px;
+  cursor: pointer;
+  box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
+  transition: all 0.3s;
+}
+
+.settings-toggle:hover { transform: rotate(90deg); }
+
+.settings-menu {
+  position: absolute;
+  bottom: 60px;
+  right: 0;
+  background: rgba(10, 10, 10, 0.95);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  border-radius: 16px;
+  padding: 18px;
+  min-width: 220px;
+  display: none;
+}
+
+.settings-menu.show { display: block; }
+
+.settings-menu h4 {
+  font-size: 12px;
+  color: var(--gold);
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.theme-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.theme-dot {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 2px solid rgba(255,255,255,0.2);
+  transition: all 0.3s;
+}
+
+.theme-dot.active {
+  border-color: white;
+  transform: scale(1.2);
+  box-shadow: 0 0 15px currentColor;
+}
+
+.lang-buttons {
+  display: flex;
+  gap: 6px;
+}
+
+.lang-btn {
+  flex: 1;
+  padding: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  color: rgba(255, 255, 255, 0.85);
+  font-family: inherit;
+  font-size: 11px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.lang-btn.active {
+  background: var(--gold);
+  color: var(--black);
+  border-color: var(--gold);
+}
+
+/* === Suggestions Section === */
+.suggest-card {
+  background: linear-gradient(145deg, rgba(28,28,28,0.85), rgba(20,20,20,0.95));
+  border: 1px solid rgba(255, 215, 0, 0.2);
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 12px;
+  transition: all 0.3s;
+}
+
+.suggest-card:hover { border-color: var(--gold); }
+
+.suggest-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.suggest-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--gold), var(--accent));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--black);
+  font-weight: 700;
+}
+
+.suggest-meta { flex: 1; }
+.suggest-name { font-size: 13px; font-weight: 600; }
+.suggest-date { font-size: 11px; color: rgba(245,245,245,0.5); }
+
+.suggest-status {
+  padding: 4px 10px;
+  border-radius: 50px;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.status-pending { background: rgba(255, 215, 0, 0.15); color: var(--gold); border: 1px solid rgba(255, 215, 0, 0.3); }
+.status-done { background: rgba(34, 197, 94, 0.15); color: #22c55e; border: 1px solid rgba(34, 197, 94, 0.3); }
+
+.suggest-text {
+  font-size: 14px;
+  line-height: 1.7;
+  color: rgba(245,245,245,0.85);
+  padding: 12px;
+  background: rgba(0,0,0,0.3);
+  border-radius: 10px;
+  border-right: 3px solid var(--gold);
+}
+
+/* === Schedule Section === */
+.schedule-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.schedule-item {
+  display: grid;
+  grid-template-columns: 100px 1fr auto;
+  gap: 16px;
+  align-items: center;
+  background: linear-gradient(145deg, rgba(28,28,28,0.6), rgba(20,20,20,0.8));
+  border: 1px solid rgba(255,215,0,0.15);
+  border-radius: 12px;
+  padding: 16px;
+  transition: all 0.3s;
+}
+
+.schedule-item:hover {
+  border-color: var(--gold);
+  transform: translateY(-2px);
+}
+
+.schedule-time {
+  text-align: center;
+  padding: 10px;
+  background: rgba(255,215,0,0.1);
+  border-radius: 10px;
+}
+
+.schedule-day {
+  font-size: 11px;
+  color: var(--gold);
+  margin-bottom: 4px;
+  font-weight: 600;
+}
+
+.schedule-hour {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 22px;
+  color: var(--gold);
+}
+
+.schedule-info h4 {
+  font-size: 15px;
+  margin-bottom: 4px;
+}
+
+.schedule-info p {
+  font-size: 12px;
+  color: rgba(245,245,245,0.6);
+}
+
+.schedule-action {
+  padding: 8px 14px;
+  background: rgba(255,215,0,0.1);
+  border: 1px solid rgba(255,215,0,0.3);
+  border-radius: 8px;
+  color: var(--gold);
+  font-size: 11px;
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: 600;
+}
+
+/* === Genre Selector (1-20) === */
+.genre-selector-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 8px;
+  max-height: 400px;
+  overflow-y: auto;
+  padding: 14px;
+  background: rgba(0,0,0,0.3);
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.05);
+}
+
+.genre-chip {
+  padding: 8px 14px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 50px;
+  color: rgba(245,245,245,0.7);
+  font-size: 12px;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.2s;
+}
+
+.genre-chip:hover {
+  background: rgba(255,215,0,0.1);
+  color: var(--gold);
+}
+
+.genre-chip.selected {
+  background: linear-gradient(135deg, var(--gold), var(--accent));
+  color: var(--black);
+  border-color: var(--gold);
+  font-weight: 700;
+}
+
+.genre-counter {
+  text-align: center;
+  padding: 12px;
+  background: rgba(255,215,0,0.08);
+  border: 1px solid rgba(255,215,0,0.2);
+  border-radius: 10px;
+  margin-top: 12px;
+  color: var(--gold);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* === AI Chat (Smart Like ChatGPT) === */
+.ai-chat-container {
+  background: linear-gradient(145deg, rgba(28,28,28,0.85), rgba(20,20,20,0.95));
+  border: 1px solid rgba(255,215,0,0.2);
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 16px;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.chat-message {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.chat-msg-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+}
+
+.chat-msg-avatar.ai {
+  background: linear-gradient(135deg, var(--gold), var(--accent));
+  color: var(--black);
+}
+
+.chat-msg-avatar.user {
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.15);
+}
+
+.chat-msg-content {
+  flex: 1;
+  background: rgba(0,0,0,0.3);
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.chat-msg-content.ai {
+  border-right: 3px solid var(--gold);
+}
+
+/* === Contact Notice (Payment) === */
+.contact-notice-payment {
+  background: linear-gradient(135deg, rgba(255,215,0,0.1), rgba(255,184,0,0.03));
+  border: 2px solid rgba(255,215,0,0.4);
+  border-radius: 14px;
+  padding: 20px;
+  margin: 20px 0;
+}
+
+.contact-notice-payment h3 {
+  color: var(--gold);
+  margin-bottom: 8px;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.contact-notice-payment p {
+  font-size: 13px;
+  color: rgba(245,245,245,0.85);
+  line-height: 1.7;
+  margin-bottom: 12px;
+}
+
+.contact-apps-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 8px;
+}
+
+.contact-app-link {
+  padding: 10px 14px;
+  background: rgba(0,0,0,0.4);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 10px;
+  font-size: 12px;
+  color: rgba(245,245,245,0.85);
+  cursor: pointer;
+  text-decoration: none;
+  display: block;
+  transition: all 0.3s;
+  text-align: center;
+}
+
+.contact-app-link:hover {
+  background: rgba(255,215,0,0.1);
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+/* === Category Tabs (Top Navigation) === */
+.category-tabs {
+  position: sticky;
+  top: 60px;
+  z-index: 90;
+  background: rgba(0, 0, 0, 0.95);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 215, 0, 0.15);
+  padding: 12px 0;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.category-tabs::-webkit-scrollbar { display: none; }
+
+.category-tabs-content {
+  display: flex;
+  gap: 10px;
+  padding: 0 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+  min-width: max-content;
+}
+
+.cat-tab {
+  padding: 10px 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1.5px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50px;
+  color: rgba(255, 255, 255, 0.75);
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.3s;
+  letter-spacing: 0.3px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.cat-tab:hover {
+  color: var(--gold);
+  border-color: rgba(255, 215, 0, 0.3);
+  background: rgba(255, 215, 0, 0.05);
+}
+
+.cat-tab.active {
+  background: linear-gradient(135deg, var(--gold), var(--accent));
+  color: #000;
+  border-color: var(--gold);
+  box-shadow: 0 4px 20px rgba(255, 215, 0, 0.4);
+  font-weight: 800;
+}
+
+.cat-tab .cat-icon {
+  font-size: 16px;
+}
+
+/* === Bottom Navigation Bar (Mobile Style) === */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.95);
+  backdrop-filter: blur(20px);
+  border-top: 1px solid rgba(255, 215, 0, 0.15);
+  padding: 10px 0 14px;
+  z-index: 150;
+  display: none;
+}
+
+.bottom-nav-content {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 0 10px;
+}
+
+.bnav-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 4px;
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  transition: all 0.3s;
+  font-family: inherit;
+  position: relative;
+}
+
+.bnav-item:hover, .bnav-item.active {
+  color: var(--gold);
+}
+
+.bnav-item.active::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30px;
+  height: 3px;
+  background: var(--gold);
+  border-radius: 0 0 3px 3px;
+  box-shadow: 0 0 10px var(--gold);
+}
+
+.bnav-icon {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bnav-icon svg {
+  width: 26px;
+  height: 26px;
+  fill: currentColor;
+}
+
+.bnav-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+/* === Floating AI Bot (Left side - Easy to reach) === */
+.ai-float-bot {
+  position: fixed;
+  bottom: 90px;
+  left: 20px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--gold), var(--accent));
+  border: 3px solid rgba(255, 215, 0, 0.3);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 140;
+  box-shadow: 
+    0 10px 30px rgba(255, 215, 0, 0.4),
+    0 0 40px rgba(255, 215, 0, 0.3);
+  animation: aiBotPulse 2s ease-in-out infinite;
+  transition: all 0.3s;
+  padding: 0;
+}
+
+.ai-float-bot:hover {
+  transform: scale(1.1) rotate(15deg);
+}
+
+@keyframes aiBotPulse {
+  0%, 100% {
+    box-shadow: 
+      0 10px 30px rgba(255, 215, 0, 0.4),
+      0 0 0 0 rgba(255, 215, 0, 0.4);
+  }
+  50% {
+    box-shadow: 
+      0 10px 30px rgba(255, 215, 0, 0.4),
+      0 0 0 15px rgba(255, 215, 0, 0);
+  }
+}
+
+.ai-bot-tooltip {
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  margin-bottom: 10px;
+  background: rgba(0,0,0,0.95);
+  color: var(--gold);
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  font-size: 12px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+  font-weight: 600;
+}
+
+.ai-float-bot:hover .ai-bot-tooltip {
+  opacity: 1;
+}
+
+/* Add bottom padding on mobile for content */
+@media (max-width: 900px) {
+  .bottom-nav {
+    display: block;
+  }
+  .page {
+    padding-bottom: 80px;
+  }
+  .ai-float-bot {
+    bottom: 90px;
+  }
+  /* Settings panel on right side in mobile too */
+  .settings-panel {
+    bottom: 90px;
+    right: 20px;
+  }
+}
+
+/* === Responsive === */
+@media (max-width: 900px) {
+  .login-page { grid-template-columns: 1fr; }
+  .brand-side { display: none; }
+  .nav-links { display: none; }
+  .detail-hero-content { grid-template-columns: 1fr; }
+  .detail-info h1, .hero-text h1 { font-size: 36px; }
+  .plans-grid { grid-template-columns: 1fr; }
+  .admin-page { grid-template-columns: 1fr; }
+  .admin-sidebar { display: flex; gap: 4px; overflow-x: auto; padding: 10px; }
+  .admin-nav-item { white-space: nowrap; min-width: max-content; }
+  .top10-num { font-size: 100px; }
+  .top10-poster { width: 90px; }
+  .navbar { padding: 10px 16px; }
+  .section { padding: 20px 16px 6px; }
+}
+</style>
+</head>
+<body>
+
+<!-- Demo Banner -->
+<div class="demo-banner">
+  🎬 DEMO ZINDOO - kurd on srt | هەموو شت کار دەکات بێ Setup
+</div>
+
+<!-- ====== LOGIN PAGE ====== -->
+<div id="page-login" class="page active">
+  <div class="login-page">
+    <div class="brand-side">
+      <div class="logo">
+        <div class="logo-icon">
+          <svg viewBox="0 0 24 24" width="20" height="20"><path d="M8 5v14l11-7z" fill="#0a0a0a"/></svg>
+        </div>
+        <div class="logo-text">kurd on srt</div>
+      </div>
+
+      <div class="hero-content">
+        <div class="premium-pill">⭐ Premium Entertainment</div>
+        <h1 class="hero-title">جیهانی <span class="accent">بێسنوور</span><br>لە یەک شوێندا</h1>
+        <p class="hero-subtitle">باشترین فیلم، زنجیرە و ئەنیمی بە زمانی کوردی سۆرانی.</p>
+      </div>
+
+      <div class="stats">
+        <div>
+          <div class="stat-number">10K+</div>
+          <div class="stat-label">ناوەڕۆک</div>
+        </div>
+        <div>
+          <div class="stat-number">50K+</div>
+          <div class="stat-label">بەکارهێنەر</div>
+        </div>
+        <div>
+          <div class="stat-number">4.9★</div>
+          <div class="stat-label">هەڵسەنگاندن</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-side">
+      <div class="form-card">
+        <div class="tabs">
+          <div class="tab-indicator" id="tabIndicator"></div>
+          <button class="tab" id="tabLogin" onclick="switchTab('login')">چوونەژوورەوە</button>
+          <button class="tab active" id="tabSignup" onclick="switchTab('signup')">دروستکردنی هەژمار</button>
+        </div>
+
+        <!-- Signup Form -->
+        <div id="signupForm">
+          <h2 class="form-title">بەخێربێیت 👋</h2>
+          <p class="form-subtitle">هەژمارێکی نوێ دروست بکە</p>
+
+          <div class="name-row">
+            <div class="form-group">
+              <label>ناوی یەکەم</label>
+              <input type="text" id="firstName" placeholder="ئاراس">
+            </div>
+            <div class="form-group">
+              <label>نازناو</label>
+              <input type="text" id="nickname" placeholder="کیلوا">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Gmail</label>
+            <input type="email" id="signupEmail" placeholder="example@gmail.com">
+          </div>
+
+          <div class="form-group">
+            <label>ژمارەی مۆبایل</label>
+            <input type="tel" id="phone" placeholder="07XX XXX XXXX">
+          </div>
+
+          <div class="form-group">
+            <label>وشەی نهێنی</label>
+            <input type="password" id="signupPassword" placeholder="••••••••">
+          </div>
+
+          <div class="form-group">
+            <label>دووبارەکردنەوەی وشەی نهێنی</label>
+            <input type="password" id="signupPasswordConfirm" placeholder="••••••••">
+          </div>
+
+          <button class="btn btn-primary btn-block" onclick="handleSignup()">دروستکردنی هەژمار</button>
+
+          <div class="demo-hint">
+            💡 <strong>گرنگ:</strong> دوای دروستکردنی هەژمار، پێویستە پارە بدەیت بۆ بوون بە خاوەنی ئەکاونت!<br>
+            📞 پەیوەندی بکە: 07515361928
+          </div>
+        </div>
+
+        <!-- Login Form -->
+        <div id="loginForm" style="display:none">
+          <h2 class="form-title">گەڕاوەی؟ 🎬</h2>
+          <p class="form-subtitle">چوونەژوورەوە بۆ هەژمارەکەت</p>
+
+          <div class="form-group">
+            <label>ئیمەیڵ</label>
+            <input type="email" id="loginEmail" placeholder="demo@kurdonsrt.com" value="demo@kurdonsrt.com">
+          </div>
+
+          <div class="form-group">
+            <label>وشەی نهێنی</label>
+            <input type="password" id="loginPassword" placeholder="••••••••" value="demo123">
+          </div>
+
+          <button class="btn btn-primary btn-block" onclick="handleLogin()">چوونەژوورەوە</button>
+
+          <div class="demo-hint">
+            💡 Demo Account: <strong>demo@kurdonsrt.com / demo123</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ====== HOME PAGE ====== -->
+<div id="page-home" class="page">
+  <nav class="navbar" id="navbar"></nav>
+  <div id="homeContent"></div>
+</div>
+
+<!-- ====== MOVIE DETAILS ====== -->
+<div id="page-movie" class="page">
+  <nav class="navbar"></nav>
+  <div id="movieContent"></div>
+</div>
+
+<!-- ====== AI SEARCH ====== -->
+<div id="page-search" class="page">
+  <nav class="navbar"></nav>
+  <div id="searchContent"></div>
+</div>
+
+<!-- ====== PAYMENT ====== -->
+<div id="page-payment" class="page">
+  <nav class="navbar"></nav>
+  <div id="paymentContent"></div>
+</div>
+
+<!-- ====== COINS ====== -->
+<div id="page-coins" class="page">
+  <nav class="navbar"></nav>
+  <div id="coinsContent"></div>
+</div>
+
+<!-- ====== ADMIN ====== -->
+<div id="page-admin" class="page">
+  <nav class="navbar"></nav>
+  <div id="adminContent"></div>
+</div>
+
+<!-- ====== SUGGESTIONS ====== -->
+<div id="page-suggest" class="page">
+  <nav class="navbar"></nav>
+  <div id="suggestContent"></div>
+</div>
+
+<!-- ====== SCHEDULE ====== -->
+<div id="page-schedule" class="page">
+  <nav class="navbar"></nav>
+  <div id="scheduleContent"></div>
+</div>
+
+<!-- ====== GENRES ====== -->
+<div id="page-genres" class="page">
+  <nav class="navbar"></nav>
+  <div id="genresContent"></div>
+</div>
+
+<!-- ====== AI CHAT ====== -->
+<div id="page-aichat" class="page">
+  <nav class="navbar"></nav>
+  <div id="aichatContent"></div>
+</div>
+
+<!-- ====== Settings Panel - ناخستنە ڕوو ==>  ====== -->
+<div class="settings-panel" id="settingsPanel" style="display:none !important">
+  <div class="settings-menu" id="settingsMenu"></div>
+  <button class="settings-toggle" onclick="toggleSettings()">⚙️</button>
+</div>
+
+<!-- ====== Floating AI Bot Button ====== -->
+<button id="aiFloatBot" class="ai-float-bot" onclick="showPage('page-aichat')" style="display:none">
+  <span style="font-family:'Cinzel',serif;font-weight:900;font-size:22px;letter-spacing:2px;color:#000">AI</span>
+  <div class="ai-bot-tooltip">✨ AI یاریدەدەر</div>
+</button>
+
+<!-- ====== Bottom Navigation (Mobile) ====== -->
+<nav id="bottomNav" class="bottom-nav" style="display:none">
+  <div class="bottom-nav-content">
+    <button class="bnav-item active" onclick="bottomNavClick('page-home', this)" id="bnavHome">
+      <div class="bnav-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 3l9 8h-3v10h-4v-6h-4v6H6V11H3l9-8z"/></svg>
+      </div>
+      <div class="bnav-label">سەرەکی</div>
+    </button>
+    <button class="bnav-item" onclick="bottomNavClick('page-watchlist', this)">
+      <div class="bnav-icon">
+        <svg viewBox="0 0 24 24"><path d="M17 3H7c-1.1 0-2 .9-2 2v16l7-3 7 3V5c0-1.1-.9-2-2-2z"/></svg>
+      </div>
+      <div class="bnav-label">لیست</div>
+    </button>
+    <button class="bnav-item" onclick="bottomNavClick('page-suggest', this)">
+      <div class="bnav-icon">
+        <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-8 7H8v2H6v-2H4V9h2V7h2v2h4v2zm4.5 2c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm3-4c-.83 0-1.5-.67-1.5-1.5S18.67 6 19.5 6s1.5.67 1.5 1.5S20.33 9 19.5 9z"/></svg>
+      </div>
+      <div class="bnav-label">پێشنیار</div>
+    </button>
+    <button class="bnav-item" onclick="bottomNavClick('page-schedule', this)">
+      <div class="bnav-icon">
+        <svg viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/></svg>
+      </div>
+      <div class="bnav-label">شیدۆڵ</div>
+    </button>
+    <button class="bnav-item" onclick="bottomNavClick('page-profile', this)">
+      <div class="bnav-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+      </div>
+      <div class="bnav-label">من</div>
+    </button>
+  </div>
+</nav>
+
+<!-- Profile Page (for Bottom Nav) -->
+<div id="page-profile" class="page">
+  <nav class="navbar"></nav>
+  <div id="profileContent"></div>
+</div>
+
+<!-- Watchlist Page (for Bottom Nav) -->
+<div id="page-watchlist" class="page">
+  <nav class="navbar"></nav>
+  <div id="watchlistContent"></div>
+</div>
+
+<!-- ====== VIDEO PLAYER ====== -->
+<div id="page-watch" class="page">
+  <nav class="navbar"></nav>
+  <div id="watchContent"></div>
+</div>
+
+<!-- Toast Notification -->
+<div id="toast" class="toast"></div>
+
+<!-- Modal -->
+<div id="modal" class="modal-overlay">
+  <div class="modal">
+    <h2 id="modalTitle">Title</h2>
+    <p id="modalMessage">Message</p>
+    <div class="modal-actions">
+      <button class="btn btn-primary" onclick="closeModal()">باشە</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ============================================
+// 🎬 kurd on srt DEMO - JavaScript
+// ============================================
+
+// 📊 State
+let currentUser = null;
+let currentPage = 'login';
+let coins = 100;
+let isPremium = false;
+let isAdmin = false;
+let watchlist = [];
+let dailyStreak = 0;
+let lastClaimedDate = null;
+let currentMovie = null;
+let heroSlideIndex = 0;
+let heroInterval = null;
+let currentTheme = 'default';
+let currentLang = 'ckb';
+let userGenres = []; // Selected genres (1-20)
+let suggestions = [
+  { name: 'ئاراس م.', text: 'تکایە ئەڵقەی 187 ناروتۆ بڵاو بکرێتەوە سوپاس', date: '2 ڕۆژ پێش', status: 'pending' },
+  { name: 'سارا ع.', text: 'فیلمی Inside Out 2 پێویستە بە کوردی دۆبلاژ بکرێت', date: '5 ڕۆژ پێش', status: 'done' },
+  { name: 'هاوار ر.', text: 'ئەنیمی One Piece بەرز بکرێتەوە بۆ HD', date: '1 هەفتە پێش', status: 'pending' }
+];
+
+// 🎭 100+ Genres
+const ALL_GENRES = [
+  'ئاکشن', 'سەرکێشی', 'ئەنیمەیشن', 'ئەنیمی', 'ژیاننامە', 'کۆمیدی', 'تاوان', 'دۆکیومێنتەری',
+  'دراما', 'خێزانی', 'خەیاڵی', 'مێژوویی', 'ترسناک', 'مۆسیقی', 'مۆزیكال', 'نهێنی', 'ڕۆمانسی',
+  'خەیاڵی زانستی', 'وەرزشی', 'دڵهەژێنەر', 'جەنگ', 'ڕۆژئاوا', 'سوپەر هێرو', 'دەروونی',
+  'کۆمیدی تاریک', 'کۆمیدی ڕۆمانسی', 'لاوان', 'مانەوە', 'کارەسات', 'سرووشتی سەرنەکەوتوو',
+  'ڤامپایر', 'زۆمبی', 'هونەری شەڕ', 'مەکا', 'سایبەرپانک', 'ستیەمپانک', 'بۆشایی ئاسمان',
+  'گەشتی کات', 'دنیای دژە ئایندە', 'دنیای باش', 'نوار', 'نوار نوێ', 'پشکنەر', 'سیخوڕی',
+  'سیاسی', 'یاسایی', 'پزیشکی', 'قوتابخانە', 'ژیانی ڕۆژانە', 'ئیسەکای', 'هارەم',
+  'هارەمی پێچەوانە', 'ئێچی', 'پارۆدی', 'ساتایەر', 'تاقیکاری', 'ئیندی', 'هونەری تایبەت',
+  'ئەپیک', 'ئەفسانەیی', 'چیرۆکی منداڵان', 'دێو', 'کایجو', 'دوای کۆتایی دنیا',
+  'ترسی مانەوە', 'سلاشەر', 'دۆزینەوەی ڕاستەوخۆ', 'موکومێنتەری', 'گەشتی ڕێگا',
+  'گەورەبوون', 'تراژیدی', 'میلۆدراما', 'دزی گەورە', 'کۆمیدی ڕەش', 'ڕووداوی ڕاستەقینە',
+  'پەیوەندی خێزانی', 'چیرۆکی عاشقانە', 'ژیانی قوتابی', 'شەڕی ناوخۆ', 'چیرۆکی ئاینی',
+  'هونەری ئەندازیاری', 'چیرۆکی کۆمەڵایەتی', 'ئەفسانەی مێژوویی', 'چیرۆکی زانستی',
+  'شێوەکاری', 'چیرۆکی گەشتی', 'شەڕی داهاتوو', 'گەشتی ئەستێرەیی', 'کۆمیدی هەڵە',
+  'چیرۆکی پەیوەندیدانی کۆمەڵایەتی', 'چیرۆکی تەکنەلۆجی', 'ژیانی سەربازی'
+];
+
+// 📅 Schedule Data
+const SCHEDULE = [
+  { day: 'ئەمشەو', time: '21:00', title: 'وەن پیس - ئەڵقە 1100', type: 'ئەنیمی', desc: 'بەشێکی نوێ بڵاو دەکرێتەوە' },
+  { day: 'سبەی', time: '20:30', title: 'ناروتۆ شیپۆدێن - ئەڵقە 187', type: 'ئەنیمی', desc: 'دۆبلاژی کوردی' },
+  { day: 'دوای سبەی', time: '22:00', title: 'House of Dragons - بەشی 2 ئەڵقە 5', type: 'زنجیرە', desc: 'ژێرنووسی کوردی' },
+  { day: 'پێنج‌شەممە', time: '19:00', title: 'Demon Slayer - ئەڵقە 12', type: 'ئەنیمی', desc: 'بەشێکی نوێ' },
+  { day: 'هەینی', time: '21:30', title: 'The Boys - بەشی 4 ئەڵقە 8', type: 'زنجیرە', desc: 'دۆبلاژی کوردی' }
+];
+
+// 🌍 Translations - زۆر فراوان (Massive)
+const TRANSLATIONS = {
+  ckb: {
+    direction: 'rtl',
+    langName: 'کوردی سۆرانی',
+    
+    // Navbar
+    home: 'سەرەکی',
+    coins: '🪙 کۆین',
+    admin: '👑 ئادمین',
+    suggest: '💬 پێشنیار',
+    schedule: '📅 شیدۆڵ',
+    search: 'گەڕان',
+    
+    // Auth
+    login: 'چوونەژوورەوە',
+    signup: 'دروستکردنی هەژمار',
+    welcome: 'بەخێربێیت',
+    welcomeBack: 'گەڕاوەی؟',
+    createAccount: 'هەژمارێکی نوێ دروست بکە',
+    loginYourAccount: 'چوونەژوورەوە بۆ هەژمارەکەت',
+    firstName: 'ناوی یەکەم',
+    nickname: 'نازناو',
+    email: 'Gmail',
+    phone: 'ژمارەی مۆبایل',
+    password: 'وشەی نهێنی',
+    passwordConfirm: 'دووبارەکردنەوەی وشەی نهێنی',
+    createBtn: 'دروستکردنی هەژمار',
+    loginBtn: 'چوونەژوورەوە',
+    importantPay: '💡 گرنگ: دوای دروستکردنی هەژمار، پێویستە پارە بدەیت بۆ بوون بە خاوەنی ئەکاونت!',
+    contact: 'پەیوەندی بکە',
+    
+    // Settings
+    settings: '⚙️ ڕێکخستنەکان',
+    themeColor: '🎨 ڕەنگی ڕووکار',
+    language: '🌍 زمان',
+    
+    // Hero
+    trendingNow: '🔥 ترێندینگ ئێستا',
+    watchNow: '▶️ بینینی ئێستا',
+    moreInfo: 'ℹ️ زانیاری زیاتر',
+    
+    // Sections
+    trending: '🔥 ترێندینگ',
+    top10: '🏆 تۆپ 10 لە کوردستان',
+    kurdishDubbed: '🎙️ دۆبلاژی کوردی',
+    newSeries: '📺 زنجیرە نوێکان',
+    anime: '⚔️ ئەنیمی',
+    byGenre: '🎭 بەپێی ژانەر',
+    seeAll: 'بینینی هەمووی ←',
+    
+    // AI
+    aiAssistant: 'یاریدەدەری AI زیرەک',
+    aiDesc: 'بە کوردی قسە بکە و فیلمی دڵخواز بدۆزەرەوە',
+    askMe: 'بپرسە ←',
+    aiReady: 'ئامادەیە بۆ یارمەتیدانت',
+    speakKurdish: 'بە کوردی سۆرانی قسە بکە',
+    
+    // Suggestions
+    suggestNew: '📝 پێشنیارێکی نوێ',
+    suggestPlaceholder: 'نموونە: تکایە ئەڵقەی 187 ناروتۆ بڵاو بکرێتەوە...',
+    sendSuggest: '📨 ناردنی پێشنیار',
+    yourSuggests: '📋 پێشنیارەکانی پێشتر',
+    pending: '⏳ چاوەڕێ',
+    done: '✅ کرا',
+    
+    // Schedule
+    scheduleTitle: 'شیدۆڵی بڵاوکردنەوە',
+    scheduleDesc: 'ئەڵقەی نوێ بەم زووانە',
+    notify: '🔔 ئاگاداری',
+    notifiedYou: '🔔 ئاگادارت دەکەینەوە',
+    
+    // Genres
+    genresTitle: 'هەڵبژاردنی ژانەرەکان',
+    genresSelected: 'ژانەر هەڵبژێردراوە',
+    saveGenres: '💾 پاراستن',
+    genresDesc: 'ئەو ژانەرانە هەڵبژێرە کە حەزت لێیانە',
+    
+    // Coins
+    yourCoins: 'کۆینی ئێستات',
+    dailyRewards: '🎁 دیاری ڕۆژانە',
+    dailyDesc: '7 ڕۆژ لە پێی دواتر، کۆینی زیاتر وەردەگریت!',
+    day: 'ڕۆژی',
+    coinsLabel: 'کۆین',
+    claimReward: '🎁 وەرگرتنی دیاری',
+    alreadyClaimed: '✓ ئەمڕۆ وەرگیراوە',
+    earnCoins: '💰 چۆن کۆین کۆبکەمەوە؟',
+    earnWatch20: '20-25 خولەک بینین',
+    earnWatch40: '40-55 خولەک بینین',
+    earnWatch1: '1-2 کاتژمێر بینین',
+    earnWatch2: '2-3 کاتژمێر بینین',
+    exchange: '🎉 گۆڕینەوە بۆ Premium',
+    exchangeDesc: 'کۆینەکانت بۆ ڕۆژی Premium بگۆڕەرەوە (Random)',
+    days: 'ڕۆژ',
+    exchangeBtn: 'گۆڕینەوە',
+    notEnough: 'کۆین کەمە',
+    
+    // Payment
+    premiumTitle: 'پلانە',
+    goldenPlans: 'زێڕییەکان',
+    choosePlan: 'پلانێک هەڵبژێرە کە لە گەڵتدا بگونجێت',
+    importantContact: '⚠️ یاسای گرنگ - تکایە بخوێنەوە',
+    contactPay: 'لە کاتی داخیلکردنی پارە، پێویستە پەیوەندی بکەن لەم ڕێگایانەوە:',
+    payMethods: '💰 شێوازی پارەدان: FIB، Qi Card، FastPay بۆ ژمارە',
+    months: 'مانگ',
+    buyNow: 'کڕین',
+    aiSearch: 'AI گەڕان بێسنوور',
+    coinGift: 'کۆین',
+    offlineDownload: 'داگرتنی ئۆفڵاین',
+    support247: 'پشتگیری 24/7',
+    supportVIP: 'پشتگیری VIP',
+    paymentWarning: '⚠️ ئاگاداری: پێویستە سەرەتا پارە بدا تەواو ئینجا دەتوانیت سەیری ناوەڕۆکی بکەیت',
+    
+    // Profile
+    profile: 'من',
+    premium: '💎 Premium ئەندام',
+    adminBadge: '👑 ئادمین',
+    coinsLabel2: 'کۆین',
+    listLabel: 'لیست',
+    daysLabel: 'ڕۆژ',
+    coinRewards: 'کۆین و خەڵاتەکان',
+    favoriteGenres: 'ژانەرە دڵخوازەکانم',
+    scheduleNav: 'شیدۆڵی بڵاوکردنەوە',
+    mySuggests: 'پێشنیارەکانم',
+    aiSearchNav: 'گەڕانی AI',
+    premiumPlan: 'پلانی Premium',
+    adminPanel: 'پانێلی ئادمین',
+    logout: 'چوونەدەرەوە',
+    
+    // Watchlist
+    myList: 'لیستی',
+    me: 'من',
+    listEmpty: 'لیستەکەت بەتاڵە',
+    listEmptyDesc: 'فیلم و زنجیرەی دڵخوازت زیاد بکە بۆ بینینی دواتر',
+    findMovies: '🔍 دۆزینەوەی فیلم',
+    
+    // Movie Card
+    addToList: '+ زیادکردن',
+    inList: '✓ لە لیستە',
+    coinReward: '🪙 کۆینی خەڵات',
+    coinRewardDesc: 'بە بینینی %98 لەم فیلمە',
+    cast: '🎭 ئەکتەرەکان',
+    similar: '🎬 فیلمی هاوشێوە',
+    
+    // Bottom Nav
+    bnHome: 'سەرەکی',
+    bnList: 'لیست',
+    bnSuggest: 'پێشنیار',
+    bnSchedule: 'شیدۆڵ',
+    bnMe: 'من',
+    
+    // Buttons
+    back: '← گەڕانەوە',
+    
+    // Plans names
+    planStarter: 'دەستپێکەر',
+    planAdvanced: 'پێشکەوتوو',
+    planPro: 'پڕۆفیشنال',
+    planElite: 'ئێلیت',
+    planSuper: 'سوپەر',
+    planLegend: 'ئەفسانەیی',
+    bestValue: '⭐ باشترین',
+    
+    // Genres (top common)
+    genreAction: 'ئاکشن', genreAdventure: 'سەرکێشی', genreAnimation: 'ئەنیمەیشن',
+    genreAnime: 'ئەنیمی', genreBiography: 'ژیاننامە', genreComedy: 'کۆمیدی',
+    genreCrime: 'تاوان', genreDocumentary: 'دۆکیومێنتەری', genreDrama: 'دراما',
+    genreFamily: 'خێزانی', genreFantasy: 'خەیاڵی', genreHistory: 'مێژوویی',
+    genreHorror: 'ترسناک', genreMusic: 'مۆسیقی', genreMystery: 'نهێنی',
+    genreRomance: 'ڕۆمانسی', genreSciFi: 'خەیاڵی زانستی', genreSport: 'وەرزشی',
+    genreThriller: 'دڵهەژێنەر', genreWar: 'جەنگ',
+    
+    // Toasts
+    themeChanged: '🎨 ڕەنگ گۆڕا',
+    langChanged: '🌍 زمان گۆڕا بۆ کوردی سۆرانی',
+    welcomeMsg: '🎉 بەخێربێیت!',
+    welcomeBackMsg: '✅ بەخێربێیتەوە!',
+    needEmail: '⚠️ تکایە Gmail بنووسە',
+    needPassword: '⚠️ تکایە وشەی نهێنی بنووسە',
+    passwordShort: '⚠️ وشەی نهێنی دەبێت 6+ پیت بێت',
+    passwordMatch: '⚠️ وشەی نهێنی یەک ناگرن',
+    needPhone: '⚠️ تکایە ژمارەی مۆبایل بنووسە',
+    
+    // Toast Messages
+    addedToList: '✅ زیاد کرا بۆ لیستی بینین',
+    removedFromList: '❌ سڕایەوە لە لیستی بینین',
+    coinReceived: 'کۆین وەرگیرا',
+    streak: 'Streak',
+    needPremium: '💎 Premium پێویستە',
+    premiumNeededDesc: 'ئەم فیلمە تەنها بۆ ئەندامانی Premium بەردەستە. تکایە پلانێک بکڕە.',
+    congrats: '🎉 پیرۆزە!',
+    planActivated: 'مانگی Premium چالاک کرا و',
+    coinsAddedDesc: 'کۆین بۆت زیاد کرا!',
+    success: '🎉 سەرکەوتوو!',
+    daysReceived: 'ڕۆژی Premium وەرتگرت!',
+    coinsUsed: 'کۆین بەکارهات.',
+    accountCreated: '🎉 هەژمارەکەت دروست بوو!',
+    welcomeName: 'بەخێربێیت',
+    importantWarning: '⚠️ گرنگ: بۆ بوون بە خاوەنی ئەکاونت تەواو، پێویستە پارە بدەیت.',
+    contactInfo: '📞 پەیوەندی',
+    
+    // Suggest
+    suggestSent: '✅ پێشنیارەکەت نێردرا',
+    suggestNeeded: '⚠️ تکایە پێشنیارەکەت بنووسە',
+    
+    // Genres validation
+    maxGenresReached: 'زۆرتر لە',
+    minGenresNeeded: 'کەمتر لە',
+    genresWord: 'ژانەر',
+    notAllowedMore: 'هەڵبژاردن نابێت',
+    notAllowedLess: 'نابێت',
+    genresSaved: 'ژانەر پارێزرا',
+    
+    // Voice
+    voiceNotSupported: '⚠️ براوزەرەکەت پشتگیری دەنگ ناکات',
+    voiceListening: '🎤 قسە بکە...',
+    voiceError: '⚠️ هەڵە لە دەنگ',
+    needSearch: '⚠️ تکایە شتێک بنووسە',
+    noResults: 'هیچ ئەنجامێک نەدۆزرایەوە',
+    tryDifferent: 'شتێکی تر تاقی بکەرەوە',
+    aiFound: 'دۆزیمەوە!',
+    aiSuggest: '🤖 AI پێشنیاری',
+    matchPercent: 'گونجاو',
+    
+    // Admin
+    adminEdit: '✏️ دەستکاری',
+    adminDelete: '🗑️ سڕایەوە',
+    adminApproved: '✅ قبوڵ کرا',
+    adminRejected: '❌ ڕەت کرایەوە',
+    adminPremiumGiven: '💎 Premium بەخشرا',
+    adminBanned: '🚫 Ban کرا',
+    adminApprove: '✓ قبوڵکردن',
+    adminReject: '✕ ڕەتکردنەوە',
+    
+    // Category Tabs
+    catHome: 'ماڵەوە',
+    catMovies: 'فیلم',
+    catSeries: 'زنجیرە',
+    catAnime: 'ئەنیمی',
+    catCartoon: 'کارتۆن',
+    catManga: 'مانگا'
+  },
+  
+  en: {
+    direction: 'ltr',
+    langName: 'English (UK)',
+    
+    home: 'Home',
+    coins: '🪙 Coins',
+    admin: '👑 Admin',
+    suggest: '💬 Suggest',
+    schedule: '📅 Schedule',
+    search: 'Search',
+    
+    login: 'Sign in',
+    signup: 'Create account',
+    welcome: 'Welcome',
+    welcomeBack: 'Welcome back?',
+    createAccount: 'Create a new account',
+    loginYourAccount: 'Sign in to your account',
+    firstName: 'First name',
+    nickname: 'Nickname',
+    email: 'Gmail',
+    phone: 'Mobile number',
+    password: 'Password',
+    passwordConfirm: 'Confirm password',
+    createBtn: 'Create account',
+    loginBtn: 'Sign in',
+    importantPay: '💡 Important: After creating an account, you must pay to fully own it!',
+    contact: 'Contact',
+    
+    settings: '⚙️ Settings',
+    themeColor: '🎨 Interface colour',
+    language: '🌍 Language',
+    
+    trendingNow: '🔥 Trending now',
+    watchNow: '▶️ Watch now',
+    moreInfo: 'ℹ️ More info',
+    
+    trending: '🔥 Trending',
+    top10: '🏆 Top 10 in Kurdistan',
+    kurdishDubbed: '🎙️ Kurdish dubbed',
+    newSeries: '📺 New series',
+    anime: '⚔️ Anime',
+    byGenre: '🎭 By genre',
+    seeAll: 'See all →',
+    
+    aiAssistant: 'AI Smart assistant',
+    aiDesc: 'Speak naturally and find your favourite film',
+    askMe: 'Ask me →',
+    aiReady: 'Ready to help you',
+    speakKurdish: 'Speak in any language',
+    
+    suggestNew: '📝 New suggestion',
+    suggestPlaceholder: 'Example: Please release Naruto episode 187...',
+    sendSuggest: '📨 Send suggestion',
+    yourSuggests: '📋 Previous suggestions',
+    pending: '⏳ Pending',
+    done: '✅ Done',
+    
+    scheduleTitle: 'Release schedule',
+    scheduleDesc: 'New episodes coming soon',
+    notify: '🔔 Notify',
+    notifiedYou: "🔔 We'll notify you",
+    
+    genresTitle: 'Choose genres',
+    genresSelected: 'genres selected',
+    saveGenres: '💾 Save',
+    genresDesc: 'Select the genres you love',
+    
+    yourCoins: 'Your coins',
+    dailyRewards: '🎁 Daily rewards',
+    dailyDesc: 'After 7 days in a row, you get more coins!',
+    day: 'Day',
+    coinsLabel: 'Coins',
+    claimReward: '🎁 Claim reward',
+    alreadyClaimed: '✓ Already claimed today',
+    earnCoins: '💰 How to earn coins?',
+    earnWatch20: 'Watch 20-25 minutes',
+    earnWatch40: 'Watch 40-55 minutes',
+    earnWatch1: 'Watch 1-2 hours',
+    earnWatch2: 'Watch 2-3 hours',
+    exchange: '🎉 Exchange for Premium',
+    exchangeDesc: 'Convert your coins to Premium days (Random)',
+    days: 'days',
+    exchangeBtn: 'Exchange',
+    notEnough: 'Not enough coins',
+    
+    premiumTitle: 'Golden',
+    goldenPlans: 'Plans',
+    choosePlan: 'Choose a plan that suits you',
+    importantContact: '⚠️ Important rule - Please read',
+    contactPay: 'When making a payment, please contact us via:',
+    payMethods: '💰 Payment methods: FIB, Qi Card, FastPay to number',
+    months: 'months',
+    buyNow: 'Buy',
+    aiSearch: 'Unlimited AI search',
+    coinGift: 'Coins',
+    offlineDownload: 'Offline download',
+    support247: '24/7 Support',
+    supportVIP: 'VIP Support',
+    paymentWarning: '⚠️ Warning: You must pay first before you can watch any content',
+    
+    profile: 'Profile',
+    premium: '💎 Premium member',
+    adminBadge: '👑 Admin',
+    coinsLabel2: 'Coins',
+    listLabel: 'List',
+    daysLabel: 'Days',
+    coinRewards: 'Coins & rewards',
+    favoriteGenres: 'My favourite genres',
+    scheduleNav: 'Release schedule',
+    mySuggests: 'My suggestions',
+    aiSearchNav: 'AI search',
+    premiumPlan: 'Premium plans',
+    adminPanel: 'Admin panel',
+    logout: 'Sign out',
+    
+    myList: 'My',
+    me: 'List',
+    listEmpty: 'Your list is empty',
+    listEmptyDesc: 'Add your favourite films to watch later',
+    findMovies: '🔍 Find films',
+    
+    addToList: '+ Add to list',
+    inList: '✓ In list',
+    coinReward: '🪙 Coin reward',
+    coinRewardDesc: 'Watch 98% of this film to earn',
+    cast: '🎭 Cast',
+    similar: '🎬 Similar films',
+    
+    bnHome: 'Home',
+    bnList: 'List',
+    bnSuggest: 'Suggest',
+    bnSchedule: 'Schedule',
+    bnMe: 'Me',
+    
+    back: '← Back',
+    
+    planStarter: 'Starter',
+    planAdvanced: 'Advanced',
+    planPro: 'Professional',
+    planElite: 'Elite',
+    planSuper: 'Super',
+    planLegend: 'Legendary',
+    bestValue: '⭐ Best value',
+    
+    genreAction: 'Action', genreAdventure: 'Adventure', genreAnimation: 'Animation',
+    genreAnime: 'Anime', genreBiography: 'Biography', genreComedy: 'Comedy',
+    genreCrime: 'Crime', genreDocumentary: 'Documentary', genreDrama: 'Drama',
+    genreFamily: 'Family', genreFantasy: 'Fantasy', genreHistory: 'History',
+    genreHorror: 'Horror', genreMusic: 'Music', genreMystery: 'Mystery',
+    genreRomance: 'Romance', genreSciFi: 'Sci-Fi', genreSport: 'Sport',
+    genreThriller: 'Thriller', genreWar: 'War',
+    
+    themeChanged: '🎨 Colour changed',
+    langChanged: '🌍 Language changed to English (UK)',
+    welcomeMsg: '🎉 Welcome!',
+    welcomeBackMsg: '✅ Welcome back!',
+    needEmail: '⚠️ Please enter your Gmail',
+    needPassword: '⚠️ Please enter password',
+    passwordShort: '⚠️ Password must be 6+ characters',
+    passwordMatch: '⚠️ Passwords do not match',
+    needPhone: '⚠️ Please enter mobile number',
+    
+    // Toast Messages
+    addedToList: '✅ Added to your list',
+    removedFromList: '❌ Removed from your list',
+    coinReceived: 'coins received',
+    streak: 'Streak',
+    needPremium: '💎 Premium required',
+    premiumNeededDesc: 'This film is only available for Premium members. Please buy a plan.',
+    congrats: '🎉 Congratulations!',
+    planActivated: 'months of Premium activated and',
+    coinsAddedDesc: 'coins added to your balance!',
+    success: '🎉 Success!',
+    daysReceived: 'days of Premium received!',
+    coinsUsed: 'coins used.',
+    accountCreated: '🎉 Account created!',
+    welcomeName: 'Welcome',
+    importantWarning: '⚠️ Important: To fully own your account, you must pay.',
+    contactInfo: '📞 Contact',
+    
+    // Suggest
+    suggestSent: '✅ Your suggestion has been sent',
+    suggestNeeded: '⚠️ Please write your suggestion',
+    
+    // Genres validation
+    maxGenresReached: 'Cannot select more than',
+    minGenresNeeded: 'Cannot be less than',
+    genresWord: 'genres',
+    notAllowedMore: '',
+    notAllowedLess: '',
+    genresSaved: 'genres saved',
+    
+    // Voice
+    voiceNotSupported: '⚠️ Your browser does not support voice',
+    voiceListening: '🎤 Speak now...',
+    voiceError: '⚠️ Voice error',
+    needSearch: '⚠️ Please type something',
+    noResults: 'No results found',
+    tryDifferent: 'Try something different',
+    aiFound: 'Found it!',
+    aiSuggest: '🤖 AI suggests',
+    matchPercent: 'match',
+    
+    // Admin
+    adminEdit: '✏️ Edit',
+    adminDelete: '🗑️ Deleted',
+    adminApproved: '✅ Approved',
+    adminRejected: '❌ Rejected',
+    adminPremiumGiven: '💎 Premium granted',
+    adminBanned: '🚫 Banned',
+    adminApprove: '✓ Approve',
+    adminReject: '✕ Reject',
+    
+    // Category Tabs
+    catHome: 'Home',
+    catMovies: 'Films',
+    catSeries: 'Series',
+    catAnime: 'Anime',
+    catCartoon: 'Cartoons',
+    catManga: 'Manga'
+  },
+  
+  ar: {
+    direction: 'rtl',
+    langName: 'العربية السعودية',
+    
+    home: 'الرئيسية',
+    coins: '🪙 العُملات',
+    admin: '👑 المشرف',
+    suggest: '💬 اقتراح',
+    schedule: '📅 الجدول',
+    search: 'بحث',
+    
+    login: 'تسجيل الدخول',
+    signup: 'إنشاء حساب',
+    welcome: 'أهلاً وسهلاً',
+    welcomeBack: 'عُدت إلينا؟',
+    createAccount: 'إنشاء حساب جديد',
+    loginYourAccount: 'سجّل الدخول إلى حسابك',
+    firstName: 'الاسم الأول',
+    nickname: 'الاسم المستعار',
+    email: 'البريد الإلكتروني',
+    phone: 'رقم الجوال',
+    password: 'كلمة المرور',
+    passwordConfirm: 'تأكيد كلمة المرور',
+    createBtn: 'إنشاء حساب',
+    loginBtn: 'تسجيل الدخول',
+    importantPay: '💡 مهم: بعد إنشاء الحساب، يجب الدفع لتملك الحساب بالكامل!',
+    contact: 'تواصل',
+    
+    settings: '⚙️ الإعدادات',
+    themeColor: '🎨 لون الواجهة',
+    language: '🌍 اللغة',
+    
+    trendingNow: '🔥 الأكثر رواجاً الآن',
+    watchNow: '▶️ شاهد الآن',
+    moreInfo: 'ℹ️ مزيد من المعلومات',
+    
+    trending: '🔥 الأكثر رواجاً',
+    top10: '🏆 أفضل 10 في كردستان',
+    kurdishDubbed: '🎙️ مدبلج بالكردي',
+    newSeries: '📺 مسلسلات جديدة',
+    anime: '⚔️ أنمي',
+    byGenre: '🎭 حسب النوع',
+    seeAll: 'عرض الكل ←',
+    
+    aiAssistant: 'المساعد الذكي AI',
+    aiDesc: 'تحدّث طبيعياً واعثر على فيلمك المفضل',
+    askMe: 'اسألني ←',
+    aiReady: 'جاهز لمساعدتك',
+    speakKurdish: 'تحدث بأي لغة',
+    
+    suggestNew: '📝 اقتراح جديد',
+    suggestPlaceholder: 'مثال: يرجى نشر الحلقة 187 من ناروتو...',
+    sendSuggest: '📨 إرسال الاقتراح',
+    yourSuggests: '📋 الاقتراحات السابقة',
+    pending: '⏳ قيد الانتظار',
+    done: '✅ تمّ',
+    
+    scheduleTitle: 'جدول النشر',
+    scheduleDesc: 'حلقات جديدة قريباً',
+    notify: '🔔 تنبيه',
+    notifiedYou: '🔔 سنخبرك',
+    
+    genresTitle: 'اختر الأنواع',
+    genresSelected: 'نوع مختار',
+    saveGenres: '💾 حفظ',
+    genresDesc: 'اختر الأنواع التي تحبها',
+    
+    yourCoins: 'عُملاتك',
+    dailyRewards: '🎁 المكافآت اليومية',
+    dailyDesc: 'بعد 7 أيام متتالية، تحصل على عُملات أكثر!',
+    day: 'يوم',
+    coinsLabel: 'عُملة',
+    claimReward: '🎁 احصل على المكافأة',
+    alreadyClaimed: '✓ تم الاستلام اليوم',
+    earnCoins: '💰 كيف أكسب عُملات؟',
+    earnWatch20: 'مشاهدة 20-25 دقيقة',
+    earnWatch40: 'مشاهدة 40-55 دقيقة',
+    earnWatch1: 'مشاهدة 1-2 ساعة',
+    earnWatch2: 'مشاهدة 2-3 ساعة',
+    exchange: '🎉 الاستبدال إلى Premium',
+    exchangeDesc: 'حوّل عُملاتك إلى أيام Premium (عشوائي)',
+    days: 'أيام',
+    exchangeBtn: 'استبدال',
+    notEnough: 'العُملات غير كافية',
+    
+    premiumTitle: 'الباقات',
+    goldenPlans: 'الذهبية',
+    choosePlan: 'اختر باقة تناسبك',
+    importantContact: '⚠️ قاعدة مهمة - يرجى القراءة',
+    contactPay: 'عند الدفع، يرجى التواصل معنا عبر:',
+    payMethods: '💰 طرق الدفع: FIB، Qi Card، FastPay إلى الرقم',
+    months: 'شهر',
+    buyNow: 'شراء',
+    aiSearch: 'بحث AI غير محدود',
+    coinGift: 'عُملة',
+    offlineDownload: 'التحميل بدون انترنت',
+    support247: 'دعم 24/7',
+    supportVIP: 'دعم VIP',
+    paymentWarning: '⚠️ تنبيه: يجب الدفع أولاً قبل مشاهدة أي محتوى',
+    
+    profile: 'الملف الشخصي',
+    premium: '💎 عضو Premium',
+    adminBadge: '👑 مشرف',
+    coinsLabel2: 'عُملة',
+    listLabel: 'قائمة',
+    daysLabel: 'يوم',
+    coinRewards: 'العُملات والمكافآت',
+    favoriteGenres: 'أنواعي المفضلة',
+    scheduleNav: 'جدول النشر',
+    mySuggests: 'اقتراحاتي',
+    aiSearchNav: 'بحث AI',
+    premiumPlan: 'باقات Premium',
+    adminPanel: 'لوحة المشرف',
+    logout: 'تسجيل الخروج',
+    
+    myList: 'قائمتي',
+    me: '',
+    listEmpty: 'قائمتك فارغة',
+    listEmptyDesc: 'أضف أفلامك المفضلة لمشاهدتها لاحقاً',
+    findMovies: '🔍 البحث عن أفلام',
+    
+    addToList: '+ إضافة',
+    inList: '✓ في القائمة',
+    coinReward: '🪙 مكافأة العملات',
+    coinRewardDesc: 'شاهد 98% من هذا الفيلم للحصول عليها',
+    cast: '🎭 الممثلون',
+    similar: '🎬 أفلام مشابهة',
+    
+    bnHome: 'الرئيسية',
+    bnList: 'القائمة',
+    bnSuggest: 'اقتراح',
+    bnSchedule: 'الجدول',
+    bnMe: 'ملفي',
+    
+    back: '← رجوع',
+    
+    planStarter: 'مبتدئ',
+    planAdvanced: 'متقدم',
+    planPro: 'احترافي',
+    planElite: 'النخبة',
+    planSuper: 'سوبر',
+    planLegend: 'أسطوري',
+    bestValue: '⭐ الأفضل قيمة',
+    
+    genreAction: 'أكشن', genreAdventure: 'مغامرة', genreAnimation: 'رسوم متحركة',
+    genreAnime: 'أنمي', genreBiography: 'سيرة ذاتية', genreComedy: 'كوميدي',
+    genreCrime: 'جريمة', genreDocumentary: 'وثائقي', genreDrama: 'دراما',
+    genreFamily: 'عائلي', genreFantasy: 'فانتازيا', genreHistory: 'تاريخي',
+    genreHorror: 'رعب', genreMusic: 'موسيقى', genreMystery: 'غموض',
+    genreRomance: 'رومانسي', genreSciFi: 'خيال علمي', genreSport: 'رياضة',
+    genreThriller: 'إثارة', genreWar: 'حرب',
+    
+    themeChanged: '🎨 تم تغيير اللون',
+    langChanged: '🌍 تم تغيير اللغة إلى العربية السعودية',
+    welcomeMsg: '🎉 أهلاً بك!',
+    welcomeBackMsg: '✅ أهلاً بعودتك!',
+    needEmail: '⚠️ يرجى إدخال البريد',
+    needPassword: '⚠️ يرجى إدخال كلمة المرور',
+    passwordShort: '⚠️ كلمة المرور يجب أن تكون 6+ أحرف',
+    passwordMatch: '⚠️ كلمتا المرور غير متطابقتين',
+    needPhone: '⚠️ يرجى إدخال رقم الجوال',
+    
+    // Toast Messages
+    addedToList: '✅ تمت الإضافة إلى قائمتك',
+    removedFromList: '❌ تمت الإزالة من قائمتك',
+    coinReceived: 'عُملة',
+    streak: 'متتابع',
+    needPremium: '💎 يتطلب Premium',
+    premiumNeededDesc: 'هذا الفيلم متاح فقط لأعضاء Premium. يرجى شراء باقة.',
+    congrats: '🎉 تهانينا!',
+    planActivated: 'شهر من Premium تم تفعيله و',
+    coinsAddedDesc: 'عُملة أُضيفت إلى رصيدك!',
+    success: '🎉 نجح!',
+    daysReceived: 'أيام من Premium حصلت عليها!',
+    coinsUsed: 'عُملة استُخدمت.',
+    accountCreated: '🎉 تم إنشاء الحساب!',
+    welcomeName: 'أهلاً بك',
+    importantWarning: '⚠️ مهم: لتملك حسابك بالكامل، يجب الدفع.',
+    contactInfo: '📞 تواصل',
+    
+    // Suggest
+    suggestSent: '✅ تم إرسال اقتراحك',
+    suggestNeeded: '⚠️ يرجى كتابة اقتراحك',
+    
+    // Genres validation
+    maxGenresReached: 'لا يمكن اختيار أكثر من',
+    minGenresNeeded: 'لا يمكن أقل من',
+    genresWord: 'نوع',
+    notAllowedMore: '',
+    notAllowedLess: '',
+    genresSaved: 'نوع تم حفظه',
+    
+    // Voice
+    voiceNotSupported: '⚠️ متصفحك لا يدعم الصوت',
+    voiceListening: '🎤 تحدث الآن...',
+    voiceError: '⚠️ خطأ في الصوت',
+    needSearch: '⚠️ يرجى كتابة شيء',
+    noResults: 'لا توجد نتائج',
+    tryDifferent: 'جرّب شيئاً آخر',
+    aiFound: 'وجدته!',
+    aiSuggest: '🤖 يقترح AI',
+    matchPercent: 'تطابق',
+    
+    // Admin
+    adminEdit: '✏️ تعديل',
+    adminDelete: '🗑️ تم الحذف',
+    adminApproved: '✅ تمت الموافقة',
+    adminRejected: '❌ تم الرفض',
+    adminPremiumGiven: '💎 تم منح Premium',
+    adminBanned: '🚫 تم الحظر',
+    adminApprove: '✓ موافقة',
+    adminReject: '✕ رفض',
+    
+    // Category Tabs
+    catHome: 'الرئيسية',
+    catMovies: 'أفلام',
+    catSeries: 'مسلسلات',
+    catAnime: 'أنمي',
+    catCartoon: 'كرتون',
+    catManga: 'مانجا'
+  }
+};
+
+// 🎯 Helper function for translations
+function t(key) {
+  return TRANSLATIONS[currentLang]?.[key] || TRANSLATIONS.ckb[key] || key;
+}
+
+// 💾 Sample Movies Data
+const MOVIES = [
+  {
+    id: 1, title: "Dune: Part Two", titleKu: "دیون: بەشی دووەم",
+    poster: "https://image.tmdb.org/t/p/w500/8b8R8l88Qje9dn9OE8PY05Nxl1X.jpg",
+    backdrop: "https://image.tmdb.org/t/p/original/87FYZkeoyEIWrIyiCBGcSlrkxfa.jpg",
+    year: 2024, rating: 9.2, duration: "2ک 46خ",
+    description: "پۆڵ ئاترەیدیس لەگەڵ چەنی و فرێمێنەکان بە یەکەوە دەبن تا تۆڵەی بنەماڵەکەی بکاتەوە.",
+    genres: ["زانستی خەیاڵی", "ئاکشن"], type: "movie", coinReward: 200, isPremium: false,
+    cast: ["Timothée Chalamet", "Zendaya", "Rebecca Ferguson"]
+  },
+  {
+    id: 2, title: "Oppenheimer", titleKu: "ئۆپێنهایمەر",
+    poster: "https://image.tmdb.org/t/p/w500/8Gxv8gSFCU0XGDykEGv7zR1n2ua.jpg",
+    backdrop: "https://image.tmdb.org/t/p/original/rLb2cwF3Pazuxaj0sRXQ037tGI1.jpg",
+    year: 2023, rating: 8.9, duration: "3ک 0خ",
+    description: "چیرۆکی ج. ڕۆبێرت ئۆپێنهایمەر، باوکی بۆمبی ئەتۆمی و ڕۆڵی لە شەڕی جیهانی دووەمدا.",
+    genres: ["دراما", "مێژوویی"], type: "movie", coinReward: 250, isPremium: true,
+    cast: ["Cillian Murphy", "Emily Blunt", "Matt Damon"]
+  },
+  {
+    id: 3, title: "Inception", titleKu: "ئینسێپشن",
+    poster: "https://image.tmdb.org/t/p/w500/9gk7adHYeDvHkCSEqAvQNLV5Uge.jpg",
+    backdrop: "https://image.tmdb.org/t/p/original/s3TBrRGB1iav7gFOCNx3H31MoES.jpg",
+    year: 2010, rating: 8.8, duration: "2ک 28خ",
+    description: "دۆزەرەوەیەکی ماهیر کە لە خەودا داتا دەدزێت، تەحەدای تەواوی ژیانی پێشکەش دەکرێت.",
+    genres: ["زانستی خەیاڵی", "ئاکشن", "هەستبزێن"], type: "movie", coinReward: 200, isPremium: false,
+    cast: ["Leonardo DiCaprio", "Joseph Gordon-Levitt", "Elliot Page"]
+  },
+  {
+    id: 4, title: "Interstellar", titleKu: "ئینتەرستێلار",
+    poster: "https://image.tmdb.org/t/p/w500/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg",
+    backdrop: "https://image.tmdb.org/t/p/original/pbrkL804c8yAv3zBZR4QPEafpAR.jpg",
+    year: 2014, rating: 8.7, duration: "2ک 49خ",
+    description: "تیمێک لە گەشتیارانی ئاسمانی بە تونێلێکی کاتدا تێدەپەڕن بۆ پاراستنی مرۆڤایەتی.",
+    genres: ["زانستی خەیاڵی", "دراما"], type: "movie", coinReward: 200, isPremium: false,
+    cast: ["Matthew McConaughey", "Anne Hathaway", "Jessica Chastain"]
+  },
+  {
+    id: 5, title: "The Dark Knight", titleKu: "شەوالی تاریک",
+    poster: "https://image.tmdb.org/t/p/w500/qJ2tW6WMUDux911r6m7haRef0WH.jpg",
+    backdrop: "https://image.tmdb.org/t/p/original/hqkIcbrOHL86UncnHIsHVcVmzue.jpg",
+    year: 2008, rating: 9.0, duration: "2ک 32خ",
+    description: "بەتمەن دەبێت ڕووبەڕووی جۆکەر ببێتەوە، ترسناکترین دوژمنی شاری گۆتام.",
+    genres: ["ئاکشن", "تاوان", "دراما"], type: "movie", coinReward: 200, isPremium: true,
+    cast: ["Christian Bale", "Heath Ledger", "Aaron Eckhart"]
+  },
+  {
+    id: 6, title: "Spirited Away", titleKu: "بەرەو جیهانی ڕۆح",
+    poster: "https://image.tmdb.org/t/p/w500/39wmItIWsg5sZMyRUHLkWBcuVCM.jpg",
+    backdrop: "https://image.tmdb.org/t/p/original/Ab8mkHmkYADjU7wQiOkia9BzGvS.jpg",
+    year: 2001, rating: 8.6, duration: "2ک 5خ",
+    description: "کچێکی 10 ساڵە لە جیهانێکی نهێنیدا گیرۆدە دەبێت کە تێیدا خوداکان فرمانڕەوان.",
+    genres: ["ئەنیمەیشن", "ئەدڤێنچەر", "خێزانی"], type: "anime", coinReward: 150, isPremium: false,
+    cast: ["Rumi Hiiragi", "Miyu Irino"]
+  },
+  {
+    id: 7, title: "Breaking Bad", titleKu: "تێکشکانی خراپ",
+    poster: "https://image.tmdb.org/t/p/w500/ggFHVNu6YYI5L9pCfOacjizRGt.jpg",
+    backdrop: "https://image.tmdb.org/t/p/original/tsRy63Mu5cu022Q9OggQvw3YSyD.jpg",
+    year: 2008, rating: 9.5, duration: "60خ × 62 ئەڵقە",
+    description: "مامۆستایەکی کیمیا لە دواهەمین قۆناغی نەخۆشیدا، دەستپێی دروستکردنی شەکری کریستاڵ دەکات.",
+    genres: ["تاوان", "دراما", "هەستبزێن"], type: "series", coinReward: 100, isPremium: true,
+    cast: ["Bryan Cranston", "Aaron Paul", "Anna Gunn"]
+  },
+  {
+    id: 8, title: "Attack on Titan", titleKu: "هێرشی تایتان",
+    poster: "https://image.tmdb.org/t/p/w500/aiy35Evcofzl7hASZZvsFgltOsD.jpg",
+    backdrop: "https://image.tmdb.org/t/p/original/8OVEXJSJN1k1A2T2qWLNqPYJrYL.jpg",
+    year: 2013, rating: 9.0, duration: "24خ × 87 ئەڵقە",
+    description: "مرۆڤ لە دژی نەهەنگی گەورە دەجەنگن کە دەیانخوات.",
+    genres: ["ئەنیمەیشن", "ئاکشن", "دراما"], type: "anime", coinReward: 80, isPremium: false,
+    cast: ["Yuki Kaji", "Marina Inoue"]
+  },
+  {
+    id: 9, title: "Avengers: Endgame", titleKu: "ئەڤێنجەرز: کۆتایی",
+    poster: "https://image.tmdb.org/t/p/w500/or06FN3Dka5tukK1e9sl16pB3iy.jpg",
+    backdrop: "https://image.tmdb.org/t/p/original/orjiB3oUIsyz60hoEqkiGpy5CeO.jpg",
+    year: 2019, rating: 8.4, duration: "3ک 1خ",
+    description: "ئەڤێنجەرز کۆ دەبنەوە بۆ گەڕاندنەوەی ئەو شتانەی ثانۆس لە دەستی داون.",
+    genres: ["ئاکشن", "ئەدڤێنچەر", "زانستی خەیاڵی"], type: "movie", coinReward: 200, isPremium: false,
+    cast: ["Robert Downey Jr.", "Chris Evans", "Mark Ruffalo"]
+  },
+  {
+    id: 10, title: "Stranger Things", titleKu: "شتە نامۆکان",
+    poster: "https://image.tmdb.org/t/p/w500/49WJfeN0moxb9IPfGn8AIqMGskD.jpg",
+    backdrop: "https://image.tmdb.org/t/p/original/56v2KjBlU4XaOv9rVYEQypROD7P.jpg",
+    year: 2016, rating: 8.7, duration: "50خ × 34 ئەڵقە",
+    description: "کۆمەڵێک منداڵ لە شارۆچکەیەکی بچوک ڕووبەڕووی فریشتەی نهێنی دەبنەوە.",
+    genres: ["دراما", "خەیاڵی", "ترسناک"], type: "series", coinReward: 80, isPremium: true,
+    cast: ["Millie Bobby Brown", "Finn Wolfhard"]
+  }
+];
+
+// 🎁 Daily Rewards
+const DAILY_REWARDS = [25, 50, 100, 150, 200, 250, 300];
+
+// 💳 Plans
+const PLANS = [
+  { months: 1, price: 5000, coins: 100, badge: "🌱", name: "دەستپێکەر", popular: false },
+  { months: 6, price: 25000, coins: 1500, badge: "💎", name: "پڕۆفیشنال", popular: true },
+  { months: 12, price: 39000, coins: 5000, badge: "👑", name: "ئەفسانەیی", popular: false }
+];
+
+// 🎯 INITIALIZATION
+document.addEventListener('DOMContentLoaded', () => {
+  // Load saved state
+  const saved = localStorage.getItem('kurdonsrt_demo');
+  if (saved) {
+    const data = JSON.parse(saved);
+    if (data.user) {
+      currentUser = data.user;
+      coins = data.coins || 100;
+      isPremium = data.isPremium || false;
+      isAdmin = data.isAdmin || false;
+      watchlist = data.watchlist || [];
+      dailyStreak = data.dailyStreak || 0;
+      lastClaimedDate = data.lastClaimedDate;
+      currentTheme = data.currentTheme || 'default';
+      currentLang = data.currentLang || 'ckb';
+      userGenres = data.userGenres || [];
+      if (data.suggestions) suggestions = data.suggestions;
+      
+      // Apply theme
+      if (currentTheme !== 'default') {
+        document.body.className = `theme-${currentTheme}`;
+      }
+      
+      showHome();
+    }
+  }
+});
+
+// 💾 Save State
+function saveState() {
+  localStorage.setItem('kurdonsrt_demo', JSON.stringify({
+    user: currentUser,
+    coins, isPremium, isAdmin,
+    watchlist, dailyStreak, lastClaimedDate,
+    currentTheme, currentLang, userGenres, suggestions
+  }));
+}
+
+// 🎨 Theme Management
+function changeTheme(theme) {
+  currentTheme = theme;
+  document.body.className = theme === 'default' ? '' : `theme-${theme}`;
+  saveState();
+  showToast('🎨 ڕەنگ گۆڕا');
+  // Rebuild profile to show active theme
+  if (currentPage === 'page-profile') buildProfilePage();
+}
+
+// 🌍 Language Management
+function changeLang(lang) {
+  currentLang = lang;
+  const tr = TRANSLATIONS[lang];
+  document.documentElement.lang = lang;
+  document.documentElement.dir = tr.direction;
+  document.body.style.direction = tr.direction;
+  saveState();
+  
+  showToast(t('langChanged'));
+  
+  if (currentUser) {
+    renderApp();
+    // Refresh current page's content
+    const currentP = currentPage;
+    setTimeout(() => {
+      if (currentP === 'page-profile') buildProfilePage();
+      if (currentP === 'page-watchlist') buildWatchlistPage();
+      if (currentP === 'page-coins') buildCoinsPage();
+      if (currentP === 'page-genres') buildGenresPage();
+      if (currentP === 'page-suggest') buildSuggestPage();
+      if (currentP === 'page-schedule') buildSchedulePage();
+      if (currentP === 'page-payment') buildPaymentPage();
+      if (currentP === 'page-search') buildSearchPage();
+      if (currentP === 'page-aichat') buildAIChatPage();
+      if (currentP === 'page-home') buildHomePage();
+      updateBottomNavLabels();
+    }, 50);
+  }
+}
+
+// ⚙️ Settings Toggle
+function toggleSettings() {
+  document.getElementById('settingsMenu').classList.toggle('show');
+}
+
+// 💬 Submit Suggestion
+function submitSuggestion() {
+  const text = document.getElementById('suggestInput').value.trim();
+  if (!text) return showToast(t('suggestNeeded'));
+  
+  suggestions.unshift({
+    name: `${currentUser.firstName} ${currentUser.lastName || ''}`.trim(),
+    text,
+    date: currentLang === 'ckb' ? 'ئێستا' : currentLang === 'ar' ? 'الآن' : 'Just now',
+    status: 'pending'
+  });
+  
+  saveState();
+  document.getElementById('suggestInput').value = '';
+  buildSuggestPage();
+  showToast(t('suggestSent'));
+}
+
+// 💬 SUGGESTIONS PAGE
+function buildSuggestPage() {
+  document.getElementById('suggestContent').innerHTML = `
+    <div class="search-page">
+      <button class="back-btn" onclick="showPage('page-home')" style="position:relative;top:0;right:0;display:inline-block;margin-bottom:20px">${t('back')}</button>
+      
+      <div class="ai-header">
+        <div class="ai-avatar">💬</div>
+        <div>
+          <h1>${t('suggest')}</h1>
+          <div class="ai-status">
+            <span class="dot"></span>
+            ${suggestions.length}
+          </div>
+        </div>
+      </div>
+      
+      <div class="search-wrapper">
+        <h3 style="color:var(--gold);margin-bottom:12px;font-size:14px">${t('suggestNew')}</h3>
+        <textarea 
+          id="suggestInput" 
+          placeholder="${t('suggestPlaceholder')}"
+          style="width:100%;padding:14px;background:rgba(0,0,0,0.4);border:1px solid rgba(255,255,255,0.08);border-radius:12px;color:var(--white);font-family:inherit;font-size:14px;direction:${TRANSLATIONS[currentLang].direction};min-height:100px;resize:vertical"
+        ></textarea>
+        <button class="btn btn-primary btn-block" style="margin-top:12px" onclick="submitSuggestion()">${t('sendSuggest')}</button>
+      </div>
+      
+      <div style="margin-top:30px">
+        <h3 style="color:var(--gold);margin-bottom:14px">${t('yourSuggests')}</h3>
+        ${suggestions.map(s => `
+          <div class="suggest-card">
+            <div class="suggest-header">
+              <div class="suggest-avatar">${s.name.charAt(0)}</div>
+              <div class="suggest-meta">
+                <div class="suggest-name">${s.name}</div>
+                <div class="suggest-date">${s.date}</div>
+              </div>
+              <div class="suggest-status ${s.status === 'pending' ? 'status-pending' : 'status-done'}">
+                ${s.status === 'pending' ? t('pending') : t('done')}
+              </div>
+            </div>
+            <div class="suggest-text">${s.text}</div>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+  `;
+}
+
+// 📅 SCHEDULE PAGE
+function buildSchedulePage() {
+  document.getElementById('scheduleContent').innerHTML = `
+    <div class="search-page">
+      <button class="back-btn" onclick="showPage('page-home')" style="position:relative;top:0;right:0;display:inline-block;margin-bottom:20px">${t('back')}</button>
+      
+      <div class="ai-header">
+        <div class="ai-avatar">📅</div>
+        <div>
+          <h1>${t('scheduleTitle')}</h1>
+          <div class="ai-status">
+            <span class="dot"></span>
+            ${SCHEDULE.length} ${t('scheduleDesc')}
+          </div>
+        </div>
+      </div>
+      
+      <div class="schedule-list">
+        ${SCHEDULE.map(s => `
+          <div class="schedule-item">
+            <div class="schedule-time">
+              <div class="schedule-day">${s.day}</div>
+              <div class="schedule-hour">${s.time}</div>
+            </div>
+            <div class="schedule-info">
+              <h4>${s.title}</h4>
+              <p>${s.type} • ${s.desc}</p>
+            </div>
+            <button class="schedule-action" onclick="showToast(t('notifiedYou'))">${t('notify')}</button>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+  `;
+}
+
+// 🎭 GENRES PAGE (1-20 selector)
+function buildGenresPage() {
+  const min = 1, max = 20;
+  document.getElementById('genresContent').innerHTML = `
+    <div class="search-page">
+      <button class="back-btn" onclick="showPage('page-home')" style="position:relative;top:0;right:0;display:inline-block;margin-bottom:20px">${t('back')}</button>
+      
+      <div class="ai-header">
+        <div class="ai-avatar">🎭</div>
+        <div>
+          <h1>${t('genresTitle')}</h1>
+          <div class="ai-status">
+            <span class="dot"></span>
+            ${min} - ${max}
+          </div>
+        </div>
+      </div>
+      
+      <div class="search-wrapper">
+        <p style="font-size:13px;color:rgba(255,255,255,0.85);margin-bottom:14px;line-height:1.7">
+          📝 ${t('genresDesc')}
+        </p>
+      </div>
+      
+      <div class="genre-selector-grid">
+        ${ALL_GENRES.map(g => `
+          <div class="genre-chip ${userGenres.includes(g) ? 'selected' : ''}" onclick="toggleGenre('${g}')">${g}</div>
+        `).join('')}
+      </div>
+      
+      <div class="genre-counter" id="genreCounter">
+        ${userGenres.length} / ${max} ${t('genresSelected')}
+      </div>
+      
+      <button class="btn btn-primary btn-block" style="margin-top:16px" onclick="saveGenres()">
+        ${t('saveGenres')}
+      </button>
+    </div>
+  `;
+}
+
+function toggleGenre(genre) {
+  const max = 20;
+  const idx = userGenres.indexOf(genre);
+  if (idx === -1) {
+    if (userGenres.length >= max) {
+      return showToast(`⚠️ ${t('maxGenresReached')} ${max} ${t('genresWord')}`);
+    }
+    userGenres.push(genre);
+  } else {
+    userGenres.splice(idx, 1);
+  }
+  buildGenresPage();
+}
+
+function saveGenres() {
+  const min = 1;
+  if (userGenres.length < min) return showToast(`⚠️ ${t('minGenresNeeded')} ${min} ${t('genresWord')}`);
+  saveState();
+  showToast(`✅ ${userGenres.length} ${t('genresSaved')}`);
+  setTimeout(() => showPage('page-home'), 1000);
+}
+
+// 🤖 AI CHAT (Smart - ChatGPT style)
+function buildAIChatPage() {
+  document.getElementById('aichatContent').innerHTML = `
+    <div class="search-page">
+      <button class="back-btn" onclick="showPage('page-home')" style="position:relative;top:0;right:0;display:inline-block;margin-bottom:20px">${t('back')}</button>
+      
+      <div class="ai-header">
+        <div class="ai-avatar" style="font-family:'Cinzel',serif;font-weight:900;color:#000">AI</div>
+        <div>
+          <h1>${t('aiAssistant')}</h1>
+          <div class="ai-status">
+            <span class="dot"></span>
+            ${t('speakKurdish')}
+          </div>
+        </div>
+      </div>
+      
+      <div class="ai-chat-container" id="chatContainer">
+        <div class="chat-message">
+          <div class="chat-msg-avatar ai" style="font-family:'Cinzel',serif;font-weight:900;color:#000;font-size:14px">AI</div>
+          <div class="chat-msg-content ai">
+            ${currentLang === 'ckb' ? `سڵاو ${currentUser?.firstName || ''}! 👋<br>
+            من یاریدەدەری AI ـی kurd on srt ـم. دەتوانم یارمەتیت بدەم بۆ:
+            <br>• 🔍 دۆزینەوەی فیلم/ئەنیمی بە وەسف کردن
+            <br>• 💡 پێشنیاری ژانەری دڵخواز
+            <br>• 📺 پرسیار دەربارەی فیلمەکان
+            <br><br>چی دەتەوێت؟` : currentLang === 'ar' ? `مرحباً ${currentUser?.firstName || ''}! 👋<br>
+            أنا المساعد الذكي لـ kurd on srt. يمكنني مساعدتك في:
+            <br>• 🔍 العثور على فيلم/أنمي بالوصف
+            <br>• 💡 اقتراح النوع المفضل
+            <br>• 📺 السؤال عن الأفلام
+            <br><br>ماذا تريد؟` : `Hello ${currentUser?.firstName || ''}! 👋<br>
+            I'm the kurd on srt AI assistant. I can help you with:
+            <br>• 🔍 Finding films/anime by description
+            <br>• 💡 Genre recommendations
+            <br>• 📺 Questions about films
+            <br><br>What would you like?`}
+          </div>
+        </div>
+      </div>
+      
+      <div class="search-wrapper">
+        <div class="search-box">
+          <span style="color:var(--gold);font-size:18px;padding-right:10px">💬</span>
+          <input type="text" id="chatInput" placeholder="${currentLang === 'ckb' ? 'نموونە: ناوی کارتۆنێکم بیرچوە، باسی پاندایەک دەکات...' : currentLang === 'ar' ? 'مثال: نسيت اسم كرتون عن باندا...' : 'Example: I forgot the name of a cartoon about a panda...'}" onkeydown="if(event.key==='Enter') sendChatMessage()">
+          <button class="search-submit" onclick="sendChatMessage()">📨</button>
+        </div>
+      </div>
+      
+      <div style="margin-top:16px;display:flex;gap:8px;flex-wrap:wrap;justify-content:center">
+        <button class="genre-chip" onclick="quickAsk('ناروتۆ چییە؟')">⚔️ Naruto</button>
+        <button class="genre-chip" onclick="quickAsk('One Piece')">🏴‍☠️ One Piece</button>
+        <button class="genre-chip" onclick="quickAsk('Demon Slayer')">🗡️ Demon Slayer</button>
+        <button class="genre-chip" onclick="quickAsk('Attack on Titan')">🏛️ AOT</button>
+        <button class="genre-chip" onclick="quickAsk('Marvel')">🦸 Marvel</button>
+        <button class="genre-chip" onclick="quickAsk('Christopher Nolan')">🎬 Nolan</button>
+        <button class="genre-chip" onclick="quickAsk('Studio Ghibli')">🌸 Ghibli</button>
+        <button class="genre-chip" onclick="quickAsk('Breaking Bad')">🧪 Breaking Bad</button>
+        <button class="genre-chip" onclick="quickAsk('Game of Thrones')">🐉 GoT</button>
+        <button class="genre-chip" onclick="quickAsk('Korea')">🇰🇷 ${currentLang === 'ckb' ? 'کۆریا' : currentLang === 'ar' ? 'كوريا' : 'Korea'}</button>
+        <button class="genre-chip" onclick="quickAsk('2024')">🆕 2024</button>
+        <button class="genre-chip" onclick="quickAsk('${t('genreAction')}')">💥 ${t('genreAction')}</button>
+        <button class="genre-chip" onclick="quickAsk('${t('genreRomance')}')">💕 ${t('genreRomance')}</button>
+        <button class="genre-chip" onclick="quickAsk('${t('genreHorror')}')">👻 ${t('genreHorror')}</button>
+      </div>
+    </div>
+  `;
+}
+
+function quickAsk(text) {
+  document.getElementById('chatInput').value = text;
+  sendChatMessage();
+}
+
+function sendChatMessage() {
+  const input = document.getElementById('chatInput');
+  const text = input.value.trim();
+  if (!text) return;
+  
+  const container = document.getElementById('chatContainer');
+  
+  // User message
+  container.innerHTML += `
+    <div class="chat-message">
+      <div class="chat-msg-avatar user">👤</div>
+      <div class="chat-msg-content">${text}</div>
+    </div>
+  `;
+  
+  input.value = '';
+  container.scrollTop = container.scrollHeight;
+  
+  // AI response (Smart-like)
+  setTimeout(() => {
+    const response = generateAIResponse(text);
+    container.innerHTML += `
+      <div class="chat-message">
+        <div class="chat-msg-avatar ai">🤖</div>
+        <div class="chat-msg-content ai">${response}</div>
+      </div>
+    `;
+    container.scrollTop = container.scrollHeight;
+  }, 800);
+}
+
+// 🧠 AI Response Generator (Kurdish Smart - Massive Knowledge)
+function generateAIResponse(query) {
+  const q = query.toLowerCase();
+  
+  // ============ ئەنیمیی بەناوبانگ ============
+  
+  // ناروتۆ
+  if (q.includes('ناروتۆ') || q.includes('naruto')) {
+    return `⚔️ <strong style="color:var(--gold)">Naruto / ناروتۆ</strong><br><br>
+    یەکێک لە بەناوبانگترین ئەنیمیە لە جیهاندا! چیرۆکی ئوزوماکی ناروتۆ، منداڵێکی هەتیو کە ڕۆح-ـی نەهەنگی نۆ کلک (Kurama) لە ناویدا گیرکراوە.<br><br>
+    📺 <strong>دوو سیریل:</strong><br>
+    • Naruto (2002) - 220 ئەڵقە<br>
+    • Naruto Shippuden (2007) - 500 ئەڵقە<br><br>
+    ⭐ هەڵسەنگاندن: 8.4 IMDb<br>
+    🎭 ژانەر: ئەنیمی، ئاکشن، سەرکێشی<br>
+    🎙️ <strong>بە کوردی دۆبلاژ کراوە</strong> ✅<br><br>
+    دەتەوێت بزانیت کام ئەڵقە بە کوردیە؟`;
+  }
+  
+  // وەن پیس
+  if (q.includes('وەن پیس') || q.includes('one piece') || q.includes('وان پیس')) {
+    return `🏴‍☠️ <strong style="color:var(--gold)">One Piece / وەن پیس</strong><br><br>
+    درێژترین ئەنیمیی بەناوبانگ! چیرۆکی <strong>مۆنکی د. لووفی</strong>، گەنجێکی کە دەیەوێت ببێتە پاشای دزە دەریاییەکان و گەنجینەی <strong>One Piece</strong> بدۆزێتەوە.<br><br>
+    📺 <strong>زیاتر لە 1100 ئەڵقە</strong> (ساڵی 1999 دەستی پێکرد)<br>
+    ⭐ هەڵسەنگاندن: 9.0 IMDb<br>
+    🎭 ژانەر: ئەنیمی، ئاکشن، کۆمیدی، سەرکێشی<br>
+    👤 دروستکار: ئیئیچیرۆ ئۆدا<br><br>
+    🎯 <strong>Arc-ە بەناوبانگەکان:</strong> East Blue، Alabasta، Water 7، Marineford، Dressrosa، Wano<br><br>
+    کام Arc دەتەوێت دەستی پێبکەیت؟`;
+  }
+  
+  // Demon Slayer
+  if (q.includes('demon slayer') || q.includes('کیمێتسو') || q.includes('کێمتسو')) {
+    return `🗡️ <strong style="color:var(--gold)">Demon Slayer / Kimetsu no Yaiba</strong><br><br>
+    یەکێک لە جوانترین ئەنیمی ئەم ساڵانە! چیرۆکی <strong>تانجیرۆ کامادۆ</strong>، گەنجێک کە خێزانەکەی لەلایەن دێوەوە دەکوژرێت و خوشکەکەی <strong>نێزوکۆ</strong> دەبێتە دێو.<br><br>
+    📺 <strong>4 سێزن</strong> (87+ ئەڵقە)<br>
+    🎬 فیلمی Mugen Train (2020) - گەورەترین فیلمی ئەنیمیی هەموو کاتەکان!<br>
+    ⭐ هەڵسەنگاندن: 8.7 IMDb<br>
+    🎭 ژانەر: ئەنیمی، ئاکشن، خەیاڵی، تراژیدی<br>
+    🎨 ئەنیمەیشن: <strong>Ufotable</strong> (باشترین لە دنیا)<br><br>
+    دەتەوێت بزانیت سکیلەکانی Hashira-ـەکان چین؟`;
+  }
+  
+  // Attack on Titan
+  if (q.includes('attack on titan') || q.includes('ئەتاک') || q.includes('تایتان')) {
+    return `🏛️ <strong style="color:var(--gold)">Attack on Titan / Shingeki no Kyojin</strong><br><br>
+    یەکێک لە ترسناک‌ترین و قووڵترین ئەنیمیی هەموو کاتەکان! چیرۆکی <strong>ئێرن یاگەر</strong> لە جیهانێکدا کە مرۆڤ لە دژی نەهەنگ گەورەکان دەژی.<br><br>
+    📺 <strong>4 سیزن (87 ئەڵقە) - تەواو بووە</strong> ✅<br>
+    ⭐ هەڵسەنگاندن: 9.0 IMDb<br>
+    🎭 ژانەر: ئەنیمی، ئاکشن، دراما، ترسناک، نهێنی<br>
+    👤 دروستکار: هاجیمە ئیسایاما<br><br>
+    🌟 <strong>پلۆتی شۆکهێن</strong> کە هەموو کاتێک بیر لێبکەیتەوە! 🤯<br><br>
+    دەتەوێت بزانیت ڕاستی نهێنی Walls چییە؟`;
+  }
+  
+  // Jujutsu Kaisen
+  if (q.includes('jujutsu') || q.includes('گۆجۆ') || q.includes('جوجوتسو')) {
+    return `👁️ <strong style="color:var(--gold)">Jujutsu Kaisen</strong><br><br>
+    ئەنیمیی نوێ و بەهێزی <strong>Studio MAPPA</strong>! چیرۆکی <strong>یوجی ئیتادۆری</strong> کە پەنجەی <strong>سوکونا</strong> دەخوات و دەبێتە میوانی پاشای نەفرین.<br><br>
+    📺 <strong>2 سیزن</strong> + فیلمی Volume 0<br>
+    ⭐ هەڵسەنگاندن: 8.6 IMDb<br>
+    🎭 ژانەر: ئەنیمی، ئاکشن، خەیاڵی، نەفرین<br>
+    🎨 ئەنیمەیشن: MAPPA<br><br>
+    🌟 <strong>کەرەکتەری بەناوبانگ:</strong> Gojo Satoru (مامۆستا گۆجۆ)، Megumi، Nobara، Maki<br><br>
+    بەرای من، Gojo باشترین کەرەکتەری ئەنیمیە! 💜`;
+  }
+  
+  // ============ فیلمە بەناوبانگەکان ============
+  
+  // Marvel
+  if (q.includes('marvel') || q.includes('مارڤڵ') || q.includes('ئەڤێنجەرز') || q.includes('avengers')) {
+    return `🦸 <strong style="color:var(--gold)">Marvel Cinematic Universe (MCU)</strong><br><br>
+    گەورەترین جیهانی فیلمی سوپەرهیرۆ! 30+ فیلم لە 2008 تا ئێستا.<br><br>
+    🎬 <strong>باشترین فیلمەکان:</strong><br>
+    • Avengers: Endgame (2019) ⭐ 8.4<br>
+    • Avengers: Infinity War (2018) ⭐ 8.4<br>
+    • Iron Man (2008) ⭐ 7.9<br>
+    • Captain America: Winter Soldier ⭐ 7.7<br>
+    • Spider-Man: No Way Home ⭐ 8.2<br>
+    • Black Panther (2018) ⭐ 7.3<br>
+    • Doctor Strange (2016) ⭐ 7.5<br><br>
+    🎯 <strong>بە تەرتیب چۆن بیبینم؟</strong><br>
+    Phase 1 → Phase 2 → Phase 3 → Multiverse Saga<br><br>
+    کام پلانەکی Marvel-ت دڵخوازترە؟`;
+  }
+  
+  // DC
+  if (q.includes('dc') || q.includes('بەتمەن') || q.includes('batman') || q.includes('سوپەرمەن') || q.includes('superman')) {
+    return `🦇 <strong style="color:var(--gold)">DC Universe</strong><br><br>
+    جیهانی تاریک و قووڵتری سوپەرهیرۆ!<br><br>
+    🎬 <strong>باشترین فیلمەکان:</strong><br>
+    • The Dark Knight (2008) ⭐ 9.0 - باشترین فیلمی سوپەرهیرۆ هەرگیز!<br>
+    • The Batman (2022) ⭐ 7.8<br>
+    • Joker (2019) ⭐ 8.4 - فیلمێکی سایکۆلۆجی شۆکهێن<br>
+    • Wonder Woman (2017) ⭐ 7.4<br>
+    • Aquaman (2018) ⭐ 6.8<br>
+    • Man of Steel (2013) ⭐ 7.0<br><br>
+    🌟 <strong>کەرەکتەری دڵخواز:</strong> Batman، Joker، Wonder Woman، The Flash<br><br>
+    دەتەوێت چیرۆکی سەرەتای Batman بزانیت؟`;
+  }
+  
+  // Christopher Nolan
+  if (q.includes('nolan') || q.includes('inception') || q.includes('interstellar') || q.includes('ئینسێپشن') || q.includes('ئینتەرستێلار')) {
+    return `🎬 <strong style="color:var(--gold)">Christopher Nolan</strong><br><br>
+    یەکێک لە گەورەترین دەرهێنەرەکانی ئێستا!<br><br>
+    🎬 <strong>گەورەترین فیلمەکانی:</strong><br>
+    • Oppenheimer (2023) ⭐ 8.4 - 7 ئۆسکار<br>
+    • Tenet (2020) ⭐ 7.3 - گەشتی کات<br>
+    • Dunkirk (2017) ⭐ 7.8 - شەڕی جیهانی دووەم<br>
+    • Interstellar (2014) ⭐ 8.7 - زانستی خەیاڵی لۆجیکی<br>
+    • Inception (2010) ⭐ 8.8 - خەو لە ناو خەو<br>
+    • The Dark Knight Trilogy (2005-2012)<br>
+    • Memento (2000) ⭐ 8.4<br>
+    • The Prestige (2006) ⭐ 8.5<br><br>
+    🎯 <strong>ستایلی Nolan:</strong> پلۆتی پێچ‌پێچ، کات، فیزیا، نهێنی<br><br>
+    کام فیلمەکەی نازانی؟`;
+  }
+  
+  // Studio Ghibli / Miyazaki
+  if (q.includes('ghibli') || q.includes('غیبلی') || q.includes('miyazaki') || q.includes('spirited') || q.includes('بەرەو جیهانی ڕۆح')) {
+    return `🌸 <strong style="color:var(--gold)">Studio Ghibli</strong><br><br>
+    گەورەترین ستۆدیۆی ئەنیمەیشن لە جیهاندا! دروستکراوی <strong>هایاو میازاکی</strong>.<br><br>
+    🎬 <strong>باشترین فیلمەکان:</strong><br>
+    • Spirited Away (2001) ⭐ 8.6 - ئۆسکاری بردۆتەوە<br>
+    • My Neighbor Totoro (1988) ⭐ 8.1<br>
+    • Princess Mononoke (1997) ⭐ 8.4<br>
+    • Howl's Moving Castle (2004) ⭐ 8.2<br>
+    • Castle in the Sky (1986) ⭐ 8.0<br>
+    • Kiki's Delivery Service (1989) ⭐ 7.8<br>
+    • The Wind Rises (2013) ⭐ 7.8<br>
+    • The Boy and the Heron (2023) ⭐ 7.4<br><br>
+    🌟 ئەم فیلمانە بۆ هەموو منداڵ و گەورە گونجاون!<br><br>
+    کام یەک دەستپێبکەیت؟ پێشنیاری من <strong>Spirited Away</strong>ـە! 🌟`;
+  }
+  
+  // ============ زنجیرە ============
+  
+  // Breaking Bad
+  if (q.includes('breaking bad') || q.includes('والتەر') || q.includes('walter')) {
+    return `🧪 <strong style="color:var(--gold)">Breaking Bad</strong><br><br>
+    باشترین زنجیرەی هەرگیز نووسراوە! چیرۆکی <strong>والتەر وایت</strong>، مامۆستای کیمیا کە لە دواهەمین قۆناغی شێرپەنجەدایە و دەستپێی دروستکردنی شەکری کریستاڵ دەکات.<br><br>
+    📺 <strong>5 سیزن، 62 ئەڵقە</strong><br>
+    ⭐ هەڵسەنگاندن: <strong>9.5 IMDb</strong> (یەکێک لە بەرزترینەکان!)<br>
+    🎭 ژانەر: تاوان، دراما، هەستبزێن<br>
+    👤 دروستکار: Vince Gilligan<br><br>
+    🌟 <strong>کەرەکتەری دڵخواز:</strong> Heisenberg (Walter)، Jesse Pinkman، Saul Goodman، Mike<br><br>
+    🎬 <strong>دواکار:</strong><br>
+    • Better Call Saul (پێش-قسە)<br>
+    • El Camino (فیلمی دواکار)<br><br>
+    "I am the one who knocks!" 💀`;
+  }
+  
+  // Game of Thrones
+  if (q.includes('game of thrones') || q.includes('گەیمی') || q.includes('تاوێژ')) {
+    return `🐉 <strong style="color:var(--gold)">Game of Thrones</strong><br><br>
+    گەورەترین زنجیرەی فانتازیا! 8 سیزن لە سەر <strong>Iron Throne</strong>ی پاشایەتیی Westeros.<br><br>
+    📺 <strong>8 سیزن، 73 ئەڵقە</strong> (2011-2019)<br>
+    ⭐ هەڵسەنگاندن: 9.2 IMDb<br>
+    🎭 ژانەر: فانتازیا، دراما، ئاکشن<br><br>
+    👑 <strong>خێزانە سەرەکیەکان:</strong><br>
+    • Stark - "Winter is Coming"<br>
+    • Lannister - زێڕ و دەسەڵات<br>
+    • Targaryen - ئاگر و خوێن<br>
+    • Baratheon - پاشای بەرزی<br><br>
+    🐉 <strong>House of the Dragon</strong> (پێش-قسە) - 200 ساڵ پێش GoT<br><br>
+    ⚠️ <strong>تێبینی:</strong> سیزنی 8 ناڕەزایی هەیە، بەڵام 1-7 سەرسوڕهێنەرە!<br><br>
+    کام خێزان دڵخوازترە لای تۆ؟`;
+  }
+  
+  // ============ ژانەرەکان ============
+  
+  // پاندا - وەک ئەو نموونەیەی کیلوا گوتی
+  if (q.includes('پاندا') || q.includes('panda')) {
+    return `🐼 <strong style="color:var(--gold)">Kung Fu Panda</strong><br><br>
+    دۆزیمەوە! ئەوەی مەبەستتە <strong>پۆ</strong>ـیە - پاندایەکی لاواز کە دەبێتە <strong>جەنگاوەری ئەژدیها (Dragon Warrior)</strong>!<br><br>
+    🎬 <strong>4 فیلم:</strong><br>
+    • Kung Fu Panda (2008) ⭐ 7.6<br>
+    • Kung Fu Panda 2 (2011) ⭐ 7.2<br>
+    • Kung Fu Panda 3 (2016) ⭐ 7.1<br>
+    • Kung Fu Panda 4 (2024) ⭐ 6.4<br><br>
+    🎭 ژانەر: ئەنیمەیشن، ئاکشن، کۆمیدی، خێزانی<br>
+    🎨 ستۆدیۆ: DreamWorks Animation<br><br>
+    🌟 <strong>کەرەکتەری دڵخواز:</strong><br>
+    • Po (پاندا)<br>
+    • Master Shifu<br>
+    • Tigress، Monkey، Mantis، Viper، Crane<br>
+    • Master Oogway (لاکپشتی دانا)<br><br>
+    "There are no accidents." - Master Oogway 🐢`;
+  }
+  
+  // ئاکشن
+  if (q.includes('ئاکشن') || q.includes('action')) {
+    return `💥 <strong style="color:var(--gold)">باشترین فیلمی ئاکشن</strong><br><br>
+    🎬 <strong>کلاسیک:</strong><br>
+    • The Dark Knight (2008) ⭐ 9.0<br>
+    • Mad Max: Fury Road (2015) ⭐ 8.1<br>
+    • John Wick (2014-2023) ⭐ 7.4-7.7<br>
+    • Mission: Impossible Series ⭐ 7.5+<br><br>
+    🆕 <strong>نوێکان (2023-2024):</strong><br>
+    • Dune: Part Two (2024) ⭐ 9.2<br>
+    • John Wick 4 (2023) ⭐ 7.7<br>
+    • Mission: Impossible 7 (2023) ⭐ 7.7<br>
+    • The Beekeeper (2024) ⭐ 6.4<br><br>
+    🌟 <strong>کۆریا:</strong><br>
+    • Train to Busan ⭐ 7.6<br>
+    • The Villainess ⭐ 6.7<br><br>
+    کام جۆری ئاکشن دەتەوێت؟ شمشێر، چەک، یاخود سۆپەرهیرۆ؟`;
+  }
+  
+  // ئەنیمی
+  if (q.includes('ئەنیمی') || q.includes('anime') || q.includes('کارتۆن')) {
+    return `⚔️ <strong style="color:var(--gold)">باشترین ئەنیمی هەرگیز</strong><br><br>
+    🏆 <strong>تۆپ 10:</strong><br>
+    1. Fullmetal Alchemist: Brotherhood ⭐ 9.1<br>
+    2. Attack on Titan ⭐ 9.0<br>
+    3. One Piece ⭐ 9.0<br>
+    4. Hunter x Hunter (2011) ⭐ 9.0<br>
+    5. Death Note ⭐ 9.0<br>
+    6. Steins;Gate ⭐ 8.8<br>
+    7. Demon Slayer ⭐ 8.7<br>
+    8. Naruto Shippuden ⭐ 8.7<br>
+    9. Code Geass ⭐ 8.7<br>
+    10. Jujutsu Kaisen ⭐ 8.6<br><br>
+    🆕 <strong>نوێکان (2024):</strong><br>
+    • Frieren: Beyond Journey's End ⭐ 9.0<br>
+    • Solo Leveling ⭐ 8.5<br>
+    • Dandadan ⭐ 8.5<br><br>
+    🎭 <strong>کام ژانەر دەتەوێت؟</strong><br>
+    Shounen، Seinen، Romance، Sci-Fi، Sports، Slice of Life`;
+  }
+  
+  // ڕۆمانسی
+  if (q.includes('ڕۆمانسی') || q.includes('romance') || q.includes('عاشق') || q.includes('خۆشەویستی')) {
+    return `💕 <strong style="color:var(--gold)">باشترین فیلمی ڕۆمانسی</strong><br><br>
+    🎬 <strong>کلاسیک:</strong><br>
+    • Titanic (1997) ⭐ 7.9<br>
+    • The Notebook (2004) ⭐ 7.8<br>
+    • Pride and Prejudice (2005) ⭐ 7.8<br>
+    • Casablanca (1942) ⭐ 8.5<br><br>
+    🆕 <strong>مۆدێرن:</strong><br>
+    • La La Land (2016) ⭐ 8.0<br>
+    • Before Sunrise/Sunset/Midnight ⭐ 8.1<br>
+    • Eternal Sunshine of the Spotless Mind ⭐ 8.3<br>
+    • 500 Days of Summer ⭐ 7.7<br>
+    • Call Me by Your Name ⭐ 7.8<br><br>
+    🌏 <strong>ئاسیایی:</strong><br>
+    • Your Name (ئەنیمی) ⭐ 8.4<br>
+    • A Silent Voice (ئەنیمی) ⭐ 8.1<br>
+    • Past Lives (2023) ⭐ 7.8<br><br>
+    کام نموونە دڵخوازترە؟ تراژیدی یان شیرین؟`;
+  }
+  
+  // ترسناک
+  if (q.includes('ترسناک') || q.includes('horror') || q.includes('ترس')) {
+    return `👻 <strong style="color:var(--gold)">باشترین فیلمی ترسناک</strong><br><br>
+    🎬 <strong>کلاسیک:</strong><br>
+    • The Shining (1980) ⭐ 8.4<br>
+    • The Exorcist (1973) ⭐ 8.1<br>
+    • Psycho (1960) ⭐ 8.5<br>
+    • Alien (1979) ⭐ 8.5<br><br>
+    🆕 <strong>مۆدێرن:</strong><br>
+    • Hereditary (2018) ⭐ 7.3 - یەکێک لە ترسناکترین فیلمەکانی هەموو کاتەکان!<br>
+    • Get Out (2017) ⭐ 7.7<br>
+    • The Conjuring Universe ⭐ 7.5<br>
+    • It (2017) ⭐ 7.3<br>
+    • A Quiet Place (2018) ⭐ 7.5<br>
+    • Smile (2022) ⭐ 6.6<br><br>
+    🇰🇷 <strong>کۆریا (باشترین لە جیهاندا!):</strong><br>
+    • Train to Busan (زۆمبی) ⭐ 7.6<br>
+    • The Wailing ⭐ 7.4<br>
+    • I Saw the Devil ⭐ 7.8<br><br>
+    ⚠️ ئەمانە تەنها بۆ هەڵگرانی ترسەن!`;
+  }
+  
+  // کۆمیدی
+  if (q.includes('کۆمیدی') || q.includes('comedy') || q.includes('پێکەنین')) {
+    return `😂 <strong style="color:var(--gold)">باشترین فیلمی کۆمیدی</strong><br><br>
+    🎬 <strong>کلاسیک:</strong><br>
+    • The Hangover (2009) ⭐ 7.7<br>
+    • Superbad (2007) ⭐ 7.6<br>
+    • Anchorman (2004) ⭐ 7.2<br>
+    • Dumb and Dumber (1994) ⭐ 7.3<br><br>
+    🆕 <strong>مۆدێرن:</strong><br>
+    • Everything Everywhere All at Once (2022) ⭐ 7.8 - 7 ئۆسکار!<br>
+    • Barbie (2023) ⭐ 6.8<br>
+    • Glass Onion (2022) ⭐ 7.1<br>
+    • Knives Out (2019) ⭐ 7.9<br><br>
+    📺 <strong>زنجیرەی کۆمیدی:</strong><br>
+    • Friends (10 سیزن) ⭐ 8.9<br>
+    • The Office (US) ⭐ 9.0<br>
+    • Brooklyn Nine-Nine ⭐ 8.4<br>
+    • Seinfeld ⭐ 8.9<br>
+    • Modern Family ⭐ 8.5<br><br>
+    کام جۆر دەتەوێت؟ تاریک، خێزانی، یان کۆمیدی هاوبەش؟`;
+  }
+  
+  // ============ Korean (K-Drama) ============
+  
+  if (q.includes('کۆریا') || q.includes('korea') || q.includes('squid') || q.includes('سکوید')) {
+    return `🇰🇷 <strong style="color:var(--gold)">K-Drama و فیلمی کۆریا</strong><br><br>
+    کۆریا ئێستا یەکێک لە بەناوبانگترین وڵاتەکانی فیلم و زنجیرەسازییە!<br><br>
+    📺 <strong>زنجیرەکان:</strong><br>
+    • Squid Game (2021) ⭐ 8.0<br>
+    • Crash Landing on You ⭐ 8.7<br>
+    • Goblin (Guardian) ⭐ 8.6<br>
+    • Vincenzo ⭐ 8.4<br>
+    • Itaewon Class ⭐ 8.2<br>
+    • Kingdom (زۆمبی) ⭐ 8.3<br>
+    • All of Us Are Dead ⭐ 7.5<br><br>
+    🎬 <strong>فیلمەکان:</strong><br>
+    • Parasite (2019) ⭐ 8.5 - 4 ئۆسکاری بردۆتەوە!<br>
+    • Train to Busan ⭐ 7.6<br>
+    • Oldboy ⭐ 8.3<br>
+    • The Handmaiden ⭐ 8.1<br>
+    • Memories of Murder ⭐ 8.1<br><br>
+    🌟 ستایلی کۆریا: قووڵ، هەستی، نەختە کاراکتەر`;
+  }
+  
+  // ============ سۆڵی فیلم ============
+  
+  // 2024 / نوێکان
+  if (q.includes('2024') || q.includes('نوێ') || q.includes('پێشنیار')) {
+    return `🌟 <strong style="color:var(--gold)">باشترینەکانی 2024</strong><br><br>
+    🎬 <strong>فیلمەکان:</strong><br>
+    • Dune: Part Two ⭐ 9.2 - زانستی خەیاڵی<br>
+    • Deadpool & Wolverine ⭐ 7.8<br>
+    • Inside Out 2 ⭐ 7.6 - ئەنیمەیشن<br>
+    • Furiosa: A Mad Max Saga ⭐ 7.6<br>
+    • The Wild Robot ⭐ 8.2 - ئەنیمەیشن<br>
+    • Civil War ⭐ 7.0<br><br>
+    📺 <strong>زنجیرەکان:</strong><br>
+    • Shogun ⭐ 8.7 - 18 Emmy!<br>
+    • House of the Dragon S2 ⭐ 8.4<br>
+    • Fallout ⭐ 8.4<br>
+    • The Penguin ⭐ 8.7<br>
+    • Arcane S2 ⭐ 9.0<br><br>
+    ⚔️ <strong>ئەنیمی:</strong><br>
+    • Frieren: Beyond Journey's End ⭐ 9.0<br>
+    • Solo Leveling ⭐ 8.5<br>
+    • Demon Slayer S4 ⭐ 8.7<br>
+    • Dandadan ⭐ 8.5<br>
+    • Look Back ⭐ 8.6<br><br>
+    کام یەکیان دەتەوێت بزانیت زانیاری زیاتری؟`;
+  }
+  
+  // وەسف / بیرچوە
+  if (q.includes('بیرچوە') || q.includes('ناوی') || q.includes('وەسف') || q.includes('چی بوو')) {
+    return `🔍 <strong style="color:var(--gold)">باشترە یارمەتیت بدەم!</strong><br><br>
+    تکایە ئەم زانیاریانە پێم بدە:<br><br>
+    📅 <strong>کات:</strong><br>
+    • چ ساڵێک بوو؟ (2000-2024)<br>
+    • فیلم بوو یان زنجیرە یان ئەنیمی؟<br><br>
+    🎭 <strong>چیرۆک:</strong><br>
+    • چی ڕوویدا؟<br>
+    • کێ کەرەکتەری سەرەکی بوو؟<br>
+    • کوێ ڕوویدا؟ (شار، وڵات، خەیاڵی)<br><br>
+    🎨 <strong>وردەکاری:</strong><br>
+    • چ ژانەرێک بوو؟ (ئاکشن، ڕۆمانسی، ترسناک...)<br>
+    • چ ڕەنگێکی بەهێز هەبوو؟<br>
+    • مۆسیقی بەناوبانگی هەبوو؟<br><br>
+    💪 هەرچەند زانیاری زیاتر بدەی، باشتر دەتدۆزمەوە!<br><br>
+    نموونە: "ئەنیمیەک بۆ 2010، چیرۆکی منداڵێک بوو کە دەبووە جەنگاوەر، ڕەنگی سەوزی زۆر هەبوو..."`;
+  }
+  
+  // سڵاو
+  if (q.includes('سڵاو') || q.includes('hi') || q.includes('hello') || q.includes('چۆنیت') || q.includes('بەخێر')) {
+    return `سڵاو ${currentUser?.firstName || ''}! 👋 چۆنیت ئەمڕۆ؟<br><br>
+    من یاریدەدەری AI ـی <strong style="color:var(--gold)">kurd on srt</strong>ـم!<br><br>
+    🎯 <strong>دەتوانم یارمەتیت بدەم بە:</strong><br>
+    • 🔍 دۆزینەوەی فیلم/ئەنیمی بە وەسف<br>
+    • 💡 پێشنیاری ژانەری دڵخواز<br>
+    • 📖 زانیاری دەربارەی فیلم/زنجیرە/ئەنیمی<br>
+    • 🌟 هەڵسەنگاندن و چاوپڕکردن<br>
+    • 📅 ڕێزی بینین (Order)<br><br>
+    تەنها بپرسە، من لێرەم! 💪`;
+  }
+  
+  // پلۆت / چیرۆک
+  if (q.includes('پلۆت') || q.includes('چیرۆک') || q.includes('plot') || q.includes('story')) {
+    return `📖 <strong style="color:var(--gold)">دەتەوێت چیرۆکی چی بزانیت؟</strong><br><br>
+    من دەتوانم چیرۆکی ئەمانەت پێ بڵێم:<br><br>
+    🎬 <strong>فیلم:</strong><br>
+    Inception، Interstellar، Tenet، Dune، The Matrix، Fight Club، Pulp Fiction...<br><br>
+    📺 <strong>زنجیرە:</strong><br>
+    Breaking Bad، Game of Thrones، Lost، Westworld، Dark، Succession...<br><br>
+    ⚔️ <strong>ئەنیمی:</strong><br>
+    Naruto، One Piece، Attack on Titan، Death Note، Code Geass...<br><br>
+    تەنها ناوی فیلم/زنجیرە بنووسە، من چیرۆکی پێت دەڵێم! 🎯`;
+  }
+  
+  // Default - بەهێز
+  return `🤔 لێم زانە چی دەتەوێت!<br><br>
+  من زانیاری زۆرم هەیە دەربارەی:<br><br>
+  ⚔️ <strong>ئەنیمی:</strong> Naruto، One Piece، Demon Slayer، Attack on Titan، Jujutsu Kaisen...<br><br>
+  🦸 <strong>سۆپەرهیرۆ:</strong> Marvel، DC، The Boys، Invincible...<br><br>
+  📺 <strong>زنجیرە:</strong> Breaking Bad، Game of Thrones، Stranger Things، Squid Game...<br><br>
+  🎬 <strong>دەرهێنەرە بەناوبانگەکان:</strong> Nolan، Tarantino، Spielberg، Miyazaki، Bong Joon-ho...<br><br>
+  🎭 <strong>ژانەر:</strong> ئاکشن، ڕۆمانسی، ترسناک، کۆمیدی، دراما، خەیاڵی...<br><br>
+  🌍 <strong>وڵات:</strong> Hollywood، کۆریا، ژاپۆن، هیند...<br><br>
+  💡 <strong>تاقی بکە:</strong><br>
+  • "ناروتۆ چییە؟"<br>
+  • "باشترین ئەنیمی 2024"<br>
+  • "فیلمی Christopher Nolan"<br>
+  • "زنجیرەی کۆریایی پێشنیار بکە"`;
+}
+
+// 🎬 TABS
+function switchTab(tab) {
+  document.getElementById('tabIndicator').classList.toggle('login', tab === 'login');
+  document.getElementById('tabLogin').classList.toggle('active', tab === 'login');
+  document.getElementById('tabSignup').classList.toggle('active', tab === 'signup');
+  document.getElementById('loginForm').style.display = tab === 'login' ? 'block' : 'none';
+  document.getElementById('signupForm').style.display = tab === 'signup' ? 'block' : 'none';
+}
+
+// 🔐 AUTH
+function handleSignup() {
+  const firstName = document.getElementById('firstName').value || 'بەکارهێنەر';
+  const nickname = document.getElementById('nickname').value || 'تازە';
+  const email = document.getElementById('signupEmail').value;
+  const password = document.getElementById('signupPassword').value;
+  const passwordConfirm = document.getElementById('signupPasswordConfirm').value;
+  const phone = document.getElementById('phone').value;
+  
+  if (!email) return showToast(t('needEmail'));
+  if (!password) return showToast(t('needPassword'));
+  if (password.length < 6) return showToast(t('passwordShort'));
+  if (password !== passwordConfirm) return showToast(t('passwordMatch'));
+  if (!phone) return showToast(t('needPhone'));
+  
+  currentUser = {
+    firstName, lastName: nickname, email, phone
+  };
+  coins = 100;
+  isAdmin = email.includes('admin');
+  saveState();
+  
+  showModal(t('accountCreated'), `${t('welcomeName')} ${firstName}!\n\n${t('importantWarning')}\n\n${t('contactInfo')}: 07515361928`);
+  
+  setTimeout(() => {
+    closeModal();
+    showHome();
+  }, 3500);
+}
+
+function handleLogin() {
+  const email = document.getElementById('loginEmail').value;
+  const password = document.getElementById('loginPassword').value;
+  
+  if (!email || !password) {
+    return showToast(currentLang === 'ckb' ? '⚠️ هەموو فیلدەکان پڕبکەرەوە' : currentLang === 'ar' ? '⚠️ يرجى ملء جميع الحقول' : '⚠️ Please fill all fields');
+  }
+  
+  currentUser = {
+    firstName: email.split('@')[0],
+    lastName: '',
+    email
+  };
+  
+  if (email === 'admin@kurdonsrt.com') {
+    isAdmin = true;
+  }
+  
+  saveState();
+  showToast(t('welcomeBackMsg'));
+  setTimeout(showHome, 800);
+}
+
+function logout() {
+  currentUser = null;
+  isAdmin = false;
+  localStorage.removeItem('kurdonsrt_demo');
+  document.body.innerHTML = location.reload();
+}
+
+// 🎬 NAVIGATION
+function showPage(pageId) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  const page = document.getElementById(pageId);
+  if (page) page.classList.add('active');
+  currentPage = pageId;
+  window.scrollTo(0, 0);
+  
+  // Update bottom nav active state
+  document.querySelectorAll('.bnav-item').forEach((b, i) => {
+    b.classList.remove('active');
+    if (pageId === 'page-home' && i === 0) b.classList.add('active');
+    if (pageId === 'page-watchlist' && i === 1) b.classList.add('active');
+    if (pageId === 'page-suggest' && i === 2) b.classList.add('active');
+    if (pageId === 'page-schedule' && i === 3) b.classList.add('active');
+    if (pageId === 'page-profile' && i === 4) b.classList.add('active');
+  });
+  
+  // Hide AI bot on AI chat page (it's already there)
+  const aiBot = document.getElementById('aiFloatBot');
+  if (aiBot) {
+    aiBot.style.display = (pageId === 'page-aichat' || pageId === 'page-login') ? 'none' : 'flex';
+  }
+  
+  // Hide bottom nav on login page
+  const bottomNav = document.getElementById('bottomNav');
+  if (bottomNav && currentUser) {
+    bottomNav.style.display = (pageId === 'page-login' || pageId === 'page-watch') ? 'none' : 'block';
+  }
+  
+  // Rebuild pages if needed
+  if (pageId === 'page-profile') buildProfilePage();
+  if (pageId === 'page-watchlist') buildWatchlistPage();
+  if (pageId === 'page-coins') buildCoinsPage();
+  if (pageId === 'page-genres') buildGenresPage();
+}
+
+function showHome() {
+  renderApp();
+  showPage('page-home');
+  startHeroSlider();
+}
+
+// 🍞 TOAST
+function showToast(message) {
+  const toast = document.getElementById('toast');
+  toast.textContent = message;
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 3000);
+}
+
+// 🪟 MODAL
+function showModal(title, message) {
+  document.getElementById('modalTitle').textContent = title;
+  document.getElementById('modalMessage').textContent = message;
+  document.getElementById('modal').classList.add('show');
+}
+
+function closeModal() {
+  document.getElementById('modal').classList.remove('show');
+}
+
+// 🎨 RENDER APP
+function renderApp() {
+  buildNavbar();
+  buildHomePage();
+  buildSearchPage();
+  buildPaymentPage();
+  buildCoinsPage();
+  buildAdminPage();
+  buildSuggestPage();
+  buildSchedulePage();
+  buildGenresPage();
+  buildAIChatPage();
+  buildProfilePage();
+  buildWatchlistPage();
+  
+  // Show bottom nav & AI bot (no more floating settings panel)
+  document.getElementById('bottomNav').style.display = 'block';
+  document.getElementById('aiFloatBot').style.display = 'flex';
+  
+  // Update bottom nav labels with current language
+  updateBottomNavLabels();
+}
+
+// 📱 Bottom Navigation
+function bottomNavClick(pageId, btn) {
+  document.querySelectorAll('.bnav-item').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+  showPage(pageId);
+}
+
+// 🔄 Update Bottom Nav with translations
+function updateBottomNavLabels() {
+  const items = document.querySelectorAll('.bnav-item .bnav-label');
+  if (items.length >= 5) {
+    items[0].textContent = t('bnHome');
+    items[1].textContent = t('bnList');
+    items[2].textContent = t('bnSuggest');
+    items[3].textContent = t('bnSchedule');
+    items[4].textContent = t('bnMe');
+  }
+}
+
+// 👤 PROFILE PAGE
+function buildProfilePage() {
+  if (!currentUser) return;
+  
+  document.getElementById('profileContent').innerHTML = `
+    <div class="search-page">
+      <div style="text-align:center;padding:30px 20px">
+        <div style="width:100px;height:100px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--accent));margin:0 auto 20px;display:flex;align-items:center;justify-content:center;font-family:'Cinzel',serif;font-size:48px;font-weight:900;color:#000;border:4px solid rgba(255,215,0,0.3);box-shadow:0 10px 40px rgba(255,215,0,0.3)">
+          ${currentUser.firstName?.charAt(0) || '?'}
+        </div>
+        <h1 style="font-family:'Cinzel','Vazirmatn',serif;font-size:28px;font-weight:900;color:#fff;margin-bottom:6px">
+          ${currentUser.firstName} ${currentUser.lastName || ''}
+        </h1>
+        <p style="color:rgba(255,255,255,0.75);font-size:14px">${currentUser.email}</p>
+        ${isPremium ? `<div style="display:inline-block;margin-top:12px;padding:6px 16px;background:linear-gradient(135deg,var(--gold),var(--accent));color:#000;border-radius:50px;font-weight:800;font-size:12px">${t('premium')}</div>` : ''}
+        ${isAdmin ? `<div style="display:inline-block;margin-top:12px;margin-right:8px;padding:6px 16px;background:rgba(255,215,0,0.2);color:var(--gold);border:2px solid var(--gold);border-radius:50px;font-weight:800;font-size:12px">${t('adminBadge')}</div>` : ''}
+      </div>
+      
+      <!-- Stats Grid -->
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:20px">
+        <div style="background:linear-gradient(135deg,rgba(255,215,0,0.15),rgba(255,184,0,0.05));border:1px solid rgba(255,215,0,0.3);border-radius:14px;padding:16px;text-align:center">
+          <div style="font-size:24px;margin-bottom:6px">🪙</div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:26px;color:var(--gold);font-weight:900">${coins}</div>
+          <div style="font-size:10px;color:rgba(255,255,255,0.7);letter-spacing:1px">${t('coinsLabel2')}</div>
+        </div>
+        <div style="background:rgba(20,20,20,0.8);border:1px solid rgba(255,255,255,0.08);border-radius:14px;padding:16px;text-align:center">
+          <div style="font-size:24px;margin-bottom:6px">🔖</div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:26px;color:#fff;font-weight:900">${watchlist.length}</div>
+          <div style="font-size:10px;color:rgba(255,255,255,0.7);letter-spacing:1px">${t('listLabel')}</div>
+        </div>
+        <div style="background:rgba(20,20,20,0.8);border:1px solid rgba(255,255,255,0.08);border-radius:14px;padding:16px;text-align:center">
+          <div style="font-size:24px;margin-bottom:6px">🔥</div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:26px;color:#fff;font-weight:900">${dailyStreak}</div>
+          <div style="font-size:10px;color:rgba(255,255,255,0.7);letter-spacing:1px">${t('daysLabel')}</div>
+        </div>
+      </div>
+      
+      <!-- Menu Items -->
+      <div style="display:flex;flex-direction:column;gap:10px">
+        ${[
+          {icon:'🪙',label:t('coinRewards'),page:'page-coins'},
+          {icon:'🎭',label:t('favoriteGenres'),page:'page-genres'},
+          {icon:'📅',label:t('scheduleNav'),page:'page-schedule'},
+          {icon:'💬',label:t('mySuggests'),page:'page-suggest'},
+          {icon:'🔍',label:t('aiSearchNav'),page:'page-search'},
+          {icon:'💳',label:t('premiumPlan'),page:'page-payment'},
+          ...(isAdmin ? [{icon:'👑',label:t('adminPanel'),page:'page-admin'}] : [])
+        ].map(item => `
+          <button onclick="showPage('${item.page}')" style="display:flex;align-items:center;gap:14px;padding:14px 18px;background:rgba(20,20,20,0.8);border:1px solid rgba(255,255,255,0.08);border-radius:12px;color:#fff;font-family:inherit;font-size:14px;font-weight:600;cursor:pointer;text-align:${TRANSLATIONS[currentLang].direction === 'rtl' ? 'right' : 'left'};width:100%;transition:all 0.3s">
+            <span style="font-size:22px">${item.icon}</span>
+            <span style="flex:1">${item.label}</span>
+            <span style="color:var(--gold)">${TRANSLATIONS[currentLang].direction === 'rtl' ? '←' : '→'}</span>
+          </button>
+        `).join('')}
+      </div>
+      
+      <!-- Settings Section (Theme + Language) -->
+      <div style="margin-top:24px;background:linear-gradient(145deg,rgba(28,28,28,0.8),rgba(20,20,20,0.9));border:1px solid rgba(255,215,0,0.2);border-radius:16px;padding:20px">
+        <h3 style="font-family:'Cinzel','Vazirmatn',serif;font-size:18px;font-weight:800;color:var(--gold);margin-bottom:16px;display:flex;align-items:center;gap:8px">
+          ${t('settings')}
+        </h3>
+        
+        <!-- Theme Colors -->
+        <div style="margin-bottom:20px">
+          <h4 style="font-size:13px;color:#fff;margin-bottom:12px;font-weight:700">${t('themeColor')}</h4>
+          <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:8px">
+            <div style="background:#FFD700;width:100%;aspect-ratio:1;border-radius:50%;cursor:pointer;border:2px solid ${currentTheme === 'default' ? '#fff' : 'rgba(255,255,255,0.2)'};transition:all 0.3s;${currentTheme === 'default' ? 'transform:scale(1.15);box-shadow:0 0 15px #FFD700' : ''}" onclick="changeTheme('default')"></div>
+            <div style="background:#dc2626;width:100%;aspect-ratio:1;border-radius:50%;cursor:pointer;border:2px solid ${currentTheme === 'red' ? '#fff' : 'rgba(255,255,255,0.2)'};transition:all 0.3s;${currentTheme === 'red' ? 'transform:scale(1.15);box-shadow:0 0 15px #dc2626' : ''}" onclick="changeTheme('red')"></div>
+            <div style="background:#16a34a;width:100%;aspect-ratio:1;border-radius:50%;cursor:pointer;border:2px solid ${currentTheme === 'green' ? '#fff' : 'rgba(255,255,255,0.2)'};transition:all 0.3s;${currentTheme === 'green' ? 'transform:scale(1.15);box-shadow:0 0 15px #16a34a' : ''}" onclick="changeTheme('green')"></div>
+            <div style="background:#9333ea;width:100%;aspect-ratio:1;border-radius:50%;cursor:pointer;border:2px solid ${currentTheme === 'purple' ? '#fff' : 'rgba(255,255,255,0.2)'};transition:all 0.3s;${currentTheme === 'purple' ? 'transform:scale(1.15);box-shadow:0 0 15px #9333ea' : ''}" onclick="changeTheme('purple')"></div>
+            <div style="background:#db2777;width:100%;aspect-ratio:1;border-radius:50%;cursor:pointer;border:2px solid ${currentTheme === 'pink' ? '#fff' : 'rgba(255,255,255,0.2)'};transition:all 0.3s;${currentTheme === 'pink' ? 'transform:scale(1.15);box-shadow:0 0 15px #db2777' : ''}" onclick="changeTheme('pink')"></div>
+            <div style="background:#ea580c;width:100%;aspect-ratio:1;border-radius:50%;cursor:pointer;border:2px solid ${currentTheme === 'orange' ? '#fff' : 'rgba(255,255,255,0.2)'};transition:all 0.3s;${currentTheme === 'orange' ? 'transform:scale(1.15);box-shadow:0 0 15px #ea580c' : ''}" onclick="changeTheme('orange')"></div>
+            <div style="background:#ffffff;width:100%;aspect-ratio:1;border-radius:50%;cursor:pointer;border:2px solid ${currentTheme === 'white' ? '#FFD700' : 'rgba(255,255,255,0.2)'};transition:all 0.3s;${currentTheme === 'white' ? 'transform:scale(1.15);box-shadow:0 0 15px #fff' : ''}" onclick="changeTheme('white')"></div>
+          </div>
+        </div>
+        
+        <!-- Language -->
+        <div>
+          <h4 style="font-size:13px;color:#fff;margin-bottom:12px;font-weight:700">${t('language')}</h4>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <button onclick="changeLang('ckb')" style="padding:12px 16px;background:${currentLang === 'ckb' ? 'var(--gold)' : 'rgba(255,255,255,0.05)'};border:1px solid ${currentLang === 'ckb' ? 'var(--gold)' : 'rgba(255,255,255,0.1)'};border-radius:10px;color:${currentLang === 'ckb' ? '#000' : 'rgba(255,255,255,0.7)'};font-family:inherit;font-size:13px;cursor:pointer;font-weight:700;text-align:right">
+              کوردی سۆرانی
+            </button>
+            <button onclick="changeLang('ar')" style="padding:12px 16px;background:${currentLang === 'ar' ? 'var(--gold)' : 'rgba(255,255,255,0.05)'};border:1px solid ${currentLang === 'ar' ? 'var(--gold)' : 'rgba(255,255,255,0.1)'};border-radius:10px;color:${currentLang === 'ar' ? '#000' : 'rgba(255,255,255,0.7)'};font-family:inherit;font-size:13px;cursor:pointer;font-weight:700;text-align:right">
+              العربية السعودية
+            </button>
+            <button onclick="changeLang('en')" style="padding:12px 16px;background:${currentLang === 'en' ? 'var(--gold)' : 'rgba(255,255,255,0.05)'};border:1px solid ${currentLang === 'en' ? 'var(--gold)' : 'rgba(255,255,255,0.1)'};border-radius:10px;color:${currentLang === 'en' ? '#000' : 'rgba(255,255,255,0.7)'};font-family:inherit;font-size:13px;cursor:pointer;font-weight:700;text-align:left">
+              English (UK)
+            </button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Logout -->
+      <button onclick="logout()" style="display:flex;align-items:center;gap:14px;padding:14px 18px;background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.3);border-radius:12px;color:#ef4444;font-family:inherit;font-size:14px;font-weight:700;cursor:pointer;text-align:${TRANSLATIONS[currentLang].direction === 'rtl' ? 'right' : 'left'};width:100%;margin-top:20px">
+        <span style="font-size:22px">🚪</span>
+        <span style="flex:1">${t('logout')}</span>
+      </button>
+    </div>
+  `;
+}
+
+// 🔖 WATCHLIST PAGE
+function buildWatchlistPage() {
+  const watchlistMovies = MOVIES.filter(m => watchlist.includes(m.id));
+  
+  document.getElementById('watchlistContent').innerHTML = `
+    <div class="search-page">
+      <div class="ai-header">
+        <div class="ai-avatar">🔖</div>
+        <div>
+          <h1>${t('myList')} <span class="accent">${t('me')}</span></h1>
+          <div class="ai-status">
+            <span class="dot"></span>
+            ${watchlistMovies.length}
+          </div>
+        </div>
+      </div>
+      
+      ${watchlistMovies.length === 0 ? `
+        <div style="text-align:center;padding:60px 20px;background:rgba(20,20,20,0.6);border:1px dashed rgba(255,215,0,0.2);border-radius:16px">
+          <div style="font-size:60px;margin-bottom:16px">🔖</div>
+          <h3 style="font-family:'Cinzel','Vazirmatn',serif;font-size:22px;font-weight:800;color:#fff;margin-bottom:8px">${t('listEmpty')}</h3>
+          <p style="color:rgba(255,255,255,0.7);font-size:14px;margin-bottom:20px">${t('listEmptyDesc')}</p>
+          <button class="btn btn-primary" onclick="showPage('page-home')">${t('findMovies')}</button>
+        </div>
+      ` : `
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px">
+          ${watchlistMovies.map(m => `
+            <div class="movie-card" onclick="openMovie(${m.id})">
+              <div class="card-poster">
+                ${m.isPremium ? '<div class="card-badge" style="background:var(--gold);color:#000">💎</div>' : ''}
+                <img src="${m.poster}" alt="${m.title}">
+                <div class="card-overlay">
+                  <div class="play-icon">▶</div>
+                </div>
+              </div>
+              <div class="card-info">
+                <div class="card-title">${m.titleKu}</div>
+                <div class="card-meta">
+                  <span>⭐ ${m.rating}</span>
+                  <span>•</span>
+                  <span>${m.year}</span>
+                </div>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      `}
+    </div>
+  `;
+}
+
+// 🧭 NAVBAR
+function buildNavbar() {
+  const navHTML = `
+    <div class="nav-left">
+      <div class="logo" onclick="showPage('page-home')">
+        <div class="logo-icon">
+          <svg viewBox="0 0 24 24" width="20" height="20"><path d="M8 5v14l11-7z" fill="#0a0a0a"/></svg>
+        </div>
+        <div class="logo-text">kurd on srt</div>
+      </div>
+      <div class="nav-links">
+        <a onclick="showPage('page-home')">${t('home')}</a>
+        <a onclick="showPage('page-coins')">${t('coins')}</a>
+        <a onclick="showPage('page-suggest')">${t('suggest')}</a>
+        <a onclick="showPage('page-schedule')">${t('schedule')}</a>
+        <a onclick="showPage('page-genres')">🎭 ${t('favoriteGenres')}</a>
+        ${isAdmin ? `<a onclick="showPage('page-admin')">${t('admin')}</a>` : ''}
+      </div>
+    </div>
+    <div class="nav-right">
+      <button class="icon-btn" onclick="showPage('page-aichat')" title="AI">AI</button>
+      <button class="icon-btn" onclick="showPage('page-search')" title="${t('search')}">🔍</button>
+      <div class="coin-badge" onclick="showPage('page-coins')">
+        <div class="coin-icon">¢</div>
+        <span id="coinDisplay">${coins}</span>
+      </div>
+      ${isPremium ? `<div class="premium-badge">💎 Premium</div>` : ''}
+      <div class="avatar" title="${currentUser?.firstName || ''}">
+        ${currentUser?.firstName?.charAt(0) || '?'}
+      </div>
+      <button class="icon-btn" onclick="logout()" title="${t('logout')}">🚪</button>
+    </div>
+  `;
+  document.querySelectorAll('.navbar').forEach(nav => nav.innerHTML = navHTML);
+}
+
+// 🏠 HOME PAGE
+function buildHomePage() {
+  const movies = MOVIES;
+  const trending = movies.slice(0, 5);
+  const series = movies.filter(m => m.type === 'series');
+  const anime = movies.filter(m => m.type === 'anime');
+  
+  // Show title based on language
+  const movieTitle = (m) => currentLang === 'ckb' ? (m.titleKu || m.title) : m.title;
+  
+  // Current active category (default: home)
+  const activeCat = window.activeCategory || 'home';
+  
+  const homeHTML = `
+    <!-- Category Tabs (Top) -->
+    <div class="category-tabs">
+      <div class="category-tabs-content">
+        <button class="cat-tab ${activeCat === 'home' ? 'active' : ''}" onclick="switchCategory('home')">
+          <span class="cat-icon">🏠</span>
+          <span>${t('catHome')}</span>
+        </button>
+        <button class="cat-tab ${activeCat === 'movies' ? 'active' : ''}" onclick="switchCategory('movies')">
+          <span class="cat-icon">🎬</span>
+          <span>${t('catMovies')}</span>
+        </button>
+        <button class="cat-tab ${activeCat === 'series' ? 'active' : ''}" onclick="switchCategory('series')">
+          <span class="cat-icon">📺</span>
+          <span>${t('catSeries')}</span>
+        </button>
+        <button class="cat-tab ${activeCat === 'anime' ? 'active' : ''}" onclick="switchCategory('anime')">
+          <span class="cat-icon">⚔️</span>
+          <span>${t('catAnime')}</span>
+        </button>
+        <button class="cat-tab ${activeCat === 'cartoon' ? 'active' : ''}" onclick="switchCategory('cartoon')">
+          <span class="cat-icon">🎨</span>
+          <span>${t('catCartoon')}</span>
+        </button>
+        <button class="cat-tab ${activeCat === 'manga' ? 'active' : ''}" onclick="switchCategory('manga')">
+          <span class="cat-icon">📖</span>
+          <span>${t('catManga')}</span>
+        </button>
+      </div>
+    </div>
+    
+    ${activeCat === 'home' ? buildHomeContent(movies, trending, series, anime, movieTitle) : buildCategoryContent(activeCat, movies, movieTitle)}
+    
+    <div style="height: 60px"></div>
+  `;
+  
+  document.getElementById('homeContent').innerHTML = homeHTML;
+}
+
+// 🎯 Switch Category
+function switchCategory(cat) {
+  window.activeCategory = cat;
+  buildHomePage();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// 🏠 Home Content (default)
+function buildHomeContent(movies, trending, series, anime, movieTitle) {
+  return `
+    <!-- Hero Slider -->
+    <section class="hero-section">
+      <div class="hero-bg" id="heroBg" style="background-image: url('${trending[0].backdrop}')"></div>
+      <div class="hero-overlay"></div>
+      <div class="hero-text" id="heroText">
+        <div class="hero-pill">${t('trendingNow')}</div>
+        <h1 id="heroTitle">${movieTitle(trending[0])}</h1>
+        <div class="hero-meta">
+          <span class="rating">⭐ ${trending[0].rating}</span>
+          <span>${trending[0].year}</span>
+          <span>HD 4K</span>
+        </div>
+        <p class="hero-desc" id="heroDesc">${trending[0].description}</p>
+        <div class="hero-actions">
+          <button class="btn btn-primary" onclick="watchMovie(${trending[0].id})">${t('watchNow')}</button>
+          <button class="btn btn-secondary" onclick="openMovie(${trending[0].id})">${t('moreInfo')}</button>
+        </div>
+      </div>
+      <div class="indicators">
+        ${trending.map((_, i) => `<button class="indicator ${i === 0 ? 'active' : ''}" onclick="setHeroSlide(${i})"></button>`).join('')}
+      </div>
+    </section>
+    
+    <!-- AI CTA -->
+    <div class="ai-cta">
+      <div class="ai-cta-card" onclick="showPage('page-aichat')">
+        <div class="ai-cta-icon" style="font-family:'Cinzel',serif;font-weight:900;font-size:22px;color:#000">AI</div>
+        <div class="ai-cta-text">
+          <h3>${t('aiAssistant')}</h3>
+          <p>${t('aiDesc')}</p>
+        </div>
+        <button class="btn btn-primary">${t('askMe')}</button>
+      </div>
+    </div>
+    
+    <!-- Quick Access Cards -->
+    <div class="ai-cta">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px">
+        <div class="ai-cta-card" onclick="showPage('page-suggest')" style="padding:16px">
+          <div class="ai-cta-icon" style="width:44px;height:44px;font-size:20px">💬</div>
+          <div class="ai-cta-text">
+            <h3 style="font-size:15px">${t('suggest').replace('💬 ', '')}</h3>
+          </div>
+        </div>
+        <div class="ai-cta-card" onclick="showPage('page-schedule')" style="padding:16px">
+          <div class="ai-cta-icon" style="width:44px;height:44px;font-size:20px">📅</div>
+          <div class="ai-cta-text">
+            <h3 style="font-size:15px">${t('schedule').replace('📅 ', '')}</h3>
+            <p style="font-size:11px">${SCHEDULE.length}</p>
+          </div>
+        </div>
+        <div class="ai-cta-card" onclick="showPage('page-genres')" style="padding:16px">
+          <div class="ai-cta-icon" style="width:44px;height:44px;font-size:20px">🎭</div>
+          <div class="ai-cta-text">
+            <h3 style="font-size:15px">${t('favoriteGenres')}</h3>
+            <p style="font-size:11px">${userGenres.length}/20</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Trending -->
+    <section class="section">
+      <div class="section-header">
+        <h2 class="section-title">${t('trending')}</h2>
+        <span class="see-all">${t('seeAll')}</span>
+      </div>
+      <div class="movies-row">
+        ${movies.slice(0, 8).map(m => movieCard(m)).join('')}
+      </div>
+    </section>
+    
+    <!-- Top 10 -->
+    <section class="section">
+      <div class="section-header">
+        <h2 class="section-title">${t('top10')}</h2>
+      </div>
+      <div class="top10-row">
+        ${movies.slice(0, 10).map((m, i) => `
+          <div class="top10-item" onclick="openMovie(${m.id})">
+            <div class="top10-num">${i + 1}</div>
+            <img src="${m.poster}" alt="${m.title}" class="top10-poster">
+          </div>
+        `).join('')}
+      </div>
+    </section>
+    
+    <!-- Kurdish Dubbed -->
+    <section class="section">
+      <div class="section-header">
+        <h2 class="section-title">${t('kurdishDubbed')}</h2>
+        <span class="see-all">${t('seeAll')}</span>
+      </div>
+      <div class="movies-row">
+        ${movies.slice(2, 8).map(m => movieCard(m, '🎙️')).join('')}
+      </div>
+    </section>
+    
+    <!-- Series -->
+    <section class="section">
+      <div class="section-header">
+        <h2 class="section-title">${t('newSeries')}</h2>
+      </div>
+      <div class="movies-row">
+        ${series.map(m => movieCard(m)).join('')}
+        ${movies.slice(5, 9).map(m => movieCard(m)).join('')}
+      </div>
+    </section>
+    
+    <!-- Anime -->
+    <section class="section">
+      <div class="section-header">
+        <h2 class="section-title">${t('anime')}</h2>
+      </div>
+      <div class="movies-row">
+        ${anime.map(m => movieCard(m)).join('')}
+        ${movies.slice(0, 4).map(m => movieCard(m)).join('')}
+      </div>
+    </section>
+    
+    <!-- Genres -->
+    <section class="section">
+      <div class="section-header">
+        <h2 class="section-title">${t('byGenre')}</h2>
+      </div>
+      <div class="genres-grid">
+        ${[
+          {key: 'genreAction', i: '💥'}, {key: 'genreDrama', i: '🎭'}, {key: 'genreComedy', i: '😂'},
+          {key: 'genreHorror', i: '👻'}, {key: 'genreRomance', i: '💕'}, {key: 'genreSciFi', i: '🚀'},
+          {key: 'genreFantasy', i: '🧙'}, {key: 'genreAnime', i: '⚔️'}
+        ].map(g => `
+          <div class="genre-card" onclick="showPage('page-genres')">
+            <div class="genre-icon">${g.i}</div>
+            <div class="genre-name">${t(g.key)}</div>
+          </div>
+        `).join('')}
+      </div>
+    </section>
+  `;
+}
+
+// 🎬 Category Content (Movies/Series/Anime/Cartoon/Manga)
+function buildCategoryContent(category, movies, movieTitle) {
+  let filtered = [];
+  let title = '';
+  let icon = '';
+  let description = '';
+  
+  if (category === 'movies') {
+    filtered = movies.filter(m => m.type === 'movie');
+    title = t('catMovies');
+    icon = '🎬';
+    description = {
+      ckb: 'هەموو فیلمە دیاریکراوەکان',
+      en: 'All featured films',
+      ar: 'جميع الأفلام المميزة'
+    }[currentLang];
+  } else if (category === 'series') {
+    filtered = movies.filter(m => m.type === 'series');
+    title = t('catSeries');
+    icon = '📺';
+    description = {
+      ckb: 'زنجیرە بەناوبانگەکان',
+      en: 'Popular TV series',
+      ar: 'المسلسلات الشهيرة'
+    }[currentLang];
+  } else if (category === 'anime') {
+    filtered = movies.filter(m => m.type === 'anime');
+    title = t('catAnime');
+    icon = '⚔️';
+    description = {
+      ckb: 'باشترین ئەنیمیە ژاپۆنیەکان',
+      en: 'Best Japanese anime',
+      ar: 'أفضل الأنمي الياباني'
+    }[currentLang];
+  } else if (category === 'cartoon') {
+    filtered = movies.filter(m => m.type === 'anime');
+    title = t('catCartoon');
+    icon = '🎨';
+    description = {
+      ckb: 'کارتۆنی منداڵان و گەورەسالان',
+      en: 'Cartoons for kids and adults',
+      ar: 'كرتون للأطفال والكبار'
+    }[currentLang];
+  } else if (category === 'manga') {
+    title = t('catManga');
+    icon = '📖';
+    description = {
+      ckb: 'مانگاکانی ژاپۆن بە کوردی',
+      en: 'Japanese manga in Kurdish',
+      ar: 'مانجا يابانية بالكردية'
+    }[currentLang];
+    // Manga comes from anime (they're related)
+    filtered = movies.filter(m => m.type === 'anime');
+  }
+  
+  // Fill with additional movies if needed
+  if (filtered.length < 4) {
+    filtered = [...filtered, ...movies.filter(m => !filtered.includes(m)).slice(0, 6)];
+  }
+  
+  return `
+    <!-- Category Hero -->
+    <div style="padding:40px 30px 30px;text-align:center;background:linear-gradient(135deg,rgba(255,215,0,0.05),transparent)">
+      <div style="font-size:60px;margin-bottom:10px">${icon}</div>
+      <h1 style="font-family:'Cinzel','Vazirmatn',serif;font-size:42px;font-weight:900;color:#fff;margin-bottom:8px;letter-spacing:-1px">
+        ${title}
+      </h1>
+      <p style="font-size:15px;color:rgba(255,255,255,0.75);font-weight:500">
+        ${description}
+      </p>
+      <div style="display:inline-block;margin-top:14px;padding:6px 14px;background:rgba(255,215,0,0.15);border:1px solid rgba(255,215,0,0.3);border-radius:50px;font-size:12px;color:var(--gold);font-weight:700">
+        ${filtered.length} ${currentLang === 'ckb' ? 'بەردەست' : currentLang === 'ar' ? 'متوفر' : 'available'}
+      </div>
+    </div>
+    
+    <!-- Category Movies Grid -->
+    <section class="section">
+      <div class="section-header">
+        <h2 class="section-title">🔥 ${t('trending')}</h2>
+      </div>
+      <div class="movies-row">
+        ${filtered.slice(0, 8).map(m => movieCard(m)).join('')}
+      </div>
+    </section>
+    
+    <!-- All Content Grid -->
+    <section class="section">
+      <div class="section-header">
+        <h2 class="section-title">${icon} ${title}</h2>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:14px">
+        ${filtered.map(m => movieCard(m)).join('')}
+      </div>
+    </section>
+  `;
+}
+
+// 🎬 Movie Card Generator
+function movieCard(movie, badge) {
+  return `
+    <div class="movie-card" onclick="openMovie(${movie.id})">
+      <div class="card-poster">
+        ${badge ? `<div class="card-badge">${badge}</div>` : ''}
+        ${movie.isPremium ? '<div class="card-badge" style="background: var(--gold); color: var(--black); top: 8px; left: 8px; right: auto;">💎</div>' : ''}
+        <img src="${movie.poster}" alt="${movie.title}" loading="lazy">
+        <div class="card-overlay">
+          <div class="play-icon">▶</div>
+        </div>
+      </div>
+      <div class="card-info">
+        <div class="card-title">${movie.titleKu || movie.title}</div>
+        <div class="card-meta">
+          <span>⭐ ${movie.rating}</span>
+          <span>•</span>
+          <span>${movie.year}</span>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+// 🎠 Hero Slider
+function startHeroSlider() {
+  if (heroInterval) clearInterval(heroInterval);
+  heroInterval = setInterval(() => {
+    heroSlideIndex = (heroSlideIndex + 1) % 5;
+    updateHero();
+  }, 6000);
+}
+
+function setHeroSlide(i) {
+  heroSlideIndex = i;
+  updateHero();
+}
+
+function updateHero() {
+  const m = MOVIES[heroSlideIndex];
+  if (!m) return;
+  
+  const heroBg = document.getElementById('heroBg');
+  const heroTitle = document.getElementById('heroTitle');
+  const heroDesc = document.getElementById('heroDesc');
+  
+  if (heroBg) heroBg.style.backgroundImage = `url('${m.backdrop}')`;
+  if (heroTitle) heroTitle.textContent = m.titleKu;
+  if (heroDesc) heroDesc.textContent = m.description;
+  
+  document.querySelectorAll('.indicator').forEach((ind, i) => {
+    ind.classList.toggle('active', i === heroSlideIndex);
+  });
+}
+
+// 🎬 OPEN MOVIE
+function openMovie(id) {
+  const movie = MOVIES.find(m => m.id === id);
+  if (!movie) return;
+  currentMovie = movie;
+  
+  const inWatchlist = watchlist.includes(id);
+  const movieTitle = currentLang === 'ckb' ? (movie.titleKu || movie.title) : movie.title;
+  
+  document.getElementById('movieContent').innerHTML = `
+    <div class="detail-page">
+      <button class="back-btn" onclick="showPage('page-home')">${t('back')}</button>
+      
+      <div class="detail-hero">
+        <div class="detail-hero-bg" style="background-image: url('${movie.backdrop}')"></div>
+        <div class="hero-overlay"></div>
+        
+        <div class="detail-hero-content">
+          <div class="detail-poster">
+            <img src="${movie.poster}" alt="${movie.title}">
+          </div>
+          
+          <div class="detail-info">
+            <div style="font-size:12px;color:var(--gold);letter-spacing:2px;margin-bottom:10px">
+              ${movie.year} • ${movie.duration} • HD 4K
+            </div>
+            <h1>${movieTitle}</h1>
+            
+            <div class="pill-row">
+              <div class="pill gold">⭐ ${movie.rating} IMDb</div>
+              ${movie.genres.map(g => `<div class="pill">${g}</div>`).join('')}
+              ${movie.isPremium ? '<div class="pill gold">💎 Premium</div>' : ''}
+            </div>
+            
+            <p class="detail-desc">${movie.description}</p>
+            
+            <div style="display:flex;gap:10px;flex-wrap:wrap">
+              <button class="btn btn-primary" onclick="watchMovie(${movie.id})">${t('watchNow')}</button>
+              <button class="btn btn-secondary" onclick="toggleWatchlist(${movie.id})">
+                ${inWatchlist ? t('inList') : t('addToList')}
+              </button>
+            </div>
+            
+            <div style="margin-top:24px;padding:16px;background:rgba(255,215,0,0.08);border:1px solid rgba(255,215,0,0.2);border-radius:12px">
+              <div style="font-size:12px;color:var(--gold);margin-bottom:6px">${t('coinReward')}</div>
+              <div style="font-family:'Bebas Neue';font-size:28px;color:var(--gold)">+${movie.coinReward} ${t('coinsLabel')}</div>
+              <div style="font-size:11px;color:rgba(255,255,255,0.75);margin-top:4px">${t('coinRewardDesc')}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="section">
+        <div class="section-header">
+          <h2 class="section-title">${t('cast')}</h2>
+        </div>
+        <div style="display:flex;gap:20px;flex-wrap:wrap">
+          ${movie.cast.map(actor => `
+            <div style="text-align:center">
+              <div style="width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,#333,#555);margin-bottom:8px;border:2px solid rgba(255,215,0,0.2)"></div>
+              <div style="font-size:12px;font-weight:600">${actor}</div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+      
+      <div class="section">
+        <div class="section-header">
+          <h2 class="section-title">${t('similar')}</h2>
+        </div>
+        <div class="movies-row">
+          ${MOVIES.filter(m => m.id !== id).slice(0, 6).map(m => movieCard(m)).join('')}
+        </div>
+      </div>
+      
+      <div style="height: 60px"></div>
+    </div>
+  `;
+  
+  showPage('page-movie');
+}
+
+// ⭐ WATCHLIST
+function toggleWatchlist(id) {
+  const idx = watchlist.indexOf(id);
+  if (idx === -1) {
+    watchlist.push(id);
+    showToast(t('addedToList'));
+  } else {
+    watchlist.splice(idx, 1);
+    showToast(t('removedFromList'));
+  }
+  saveState();
+  openMovie(id);
+}
+
+// 🎥 WATCH MOVIE
+function watchMovie(id) {
+  const movie = MOVIES.find(m => m.id === id);
+  if (!movie) return;
+  
+  if (movie.isPremium && !isPremium) {
+    showModal(t('needPremium'), t('premiumNeededDesc'));
+    setTimeout(() => {
+      closeModal();
+      showPage('page-payment');
+    }, 2000);
+    return;
+  }
+  
+  document.getElementById('watchContent').innerHTML = `
+    <div class="video-page">
+      <button class="back-btn" onclick="showPage('page-movie')" style="position:absolute;top:20px;right:20px;z-index:50">${t('back')}</button>
+      <div class="video-overlay-info">
+        🎬 ${currentLang === 'ckb' ? movie.titleKu : movie.title}
+      </div>
+      <div class="video-wrapper">
+        <video controls autoplay poster="${movie.backdrop}" id="moviePlayer">
+          <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+  `;
+  
+  showPage('page-watch');
+  
+  setTimeout(() => {
+    if (currentPage === 'page-watch') {
+      coins += movie.coinReward;
+      saveState();
+      buildNavbar();
+      showToast(`🎉 +${movie.coinReward} ${t('coinReceived')}`);
+    }
+  }, 5000);
+}
+
+// 🤖 SEARCH PAGE
+function buildSearchPage() {
+  const searchPlaceholder = {
+    ckb: 'نموونە: فیلمێکی زانستی خەیاڵی پێشنیار بکە...',
+    en: 'Example: Suggest a science fiction film...',
+    ar: 'مثال: اقترح فيلم خيال علمي...'
+  }[currentLang];
+  
+  const searchHint = {
+    ckb: '💡 وشە بنووسە وەک: <strong style="color:var(--gold)">"ئاکشن"</strong>، <strong style="color:var(--gold)">"دراما"</strong>، <strong style="color:var(--gold)">"ئەنیمی"</strong>، <strong style="color:var(--gold)">"Dune"</strong>',
+    en: '💡 Try words like: <strong style="color:var(--gold)">"Action"</strong>, <strong style="color:var(--gold)">"Drama"</strong>, <strong style="color:var(--gold)">"Anime"</strong>, <strong style="color:var(--gold)">"Dune"</strong>',
+    ar: '💡 جرّب كلمات مثل: <strong style="color:var(--gold)">"أكشن"</strong>، <strong style="color:var(--gold)">"دراما"</strong>، <strong style="color:var(--gold)">"أنمي"</strong>، <strong style="color:var(--gold)">"Dune"</strong>'
+  }[currentLang];
+  
+  document.getElementById('searchContent').innerHTML = `
+    <div class="search-page">
+      <button class="back-btn" onclick="showPage('page-home')" style="position:relative;top:0;right:0;display:inline-block;margin-bottom:20px">${t('back')}</button>
+      
+      <div class="ai-header">
+        <div class="ai-avatar" style="font-family:'Cinzel',serif;font-weight:900;color:#000">AI</div>
+        <div>
+          <h1>${t('aiAssistant')}</h1>
+          <div class="ai-status">
+            <span class="dot"></span>
+            ${t('aiReady')}
+          </div>
+        </div>
+      </div>
+      
+      <div class="search-wrapper">
+        <div class="search-box">
+          <span style="color:var(--gold);font-size:18px;padding-right:10px">🔍</span>
+          <input type="text" id="searchInput" placeholder="${searchPlaceholder}" onkeydown="if(event.key==='Enter') performSearch()">
+          <button class="voice-btn" id="voiceBtn" onclick="toggleVoiceSearch()">🎤</button>
+          <button class="search-submit" onclick="performSearch()">${t('search')}</button>
+        </div>
+      </div>
+      
+      <div id="searchResults"></div>
+      
+      <div style="margin-top:30px;padding:20px;background:rgba(255,215,0,0.05);border-radius:12px;text-align:center;color:rgba(255,255,255,0.85);font-size:13px">
+        ${searchHint}
+      </div>
+    </div>
+  `;
+}
+
+function performSearch() {
+  const query = document.getElementById('searchInput').value.trim().toLowerCase();
+  if (!query) return showToast(t('needSearch'));
+  
+  // Simple search algorithm
+  const results = MOVIES.map(m => {
+    let score = 0;
+    if (m.title.toLowerCase().includes(query)) score += 50;
+    if (m.titleKu.includes(query)) score += 50;
+    if (m.description.toLowerCase().includes(query)) score += 20;
+    m.genres.forEach(g => {
+      if (g.toLowerCase().includes(query) || query.includes(g.toLowerCase())) score += 30;
+    });
+    return { ...m, score };
+  })
+  .filter(m => m.score > 0)
+  .sort((a, b) => b.score - a.score)
+  .slice(0, 6);
+  
+  if (results.length === 0) {
+    document.getElementById('searchResults').innerHTML = `
+      <div style="text-align:center;padding:40px;color:rgba(255,255,255,0.7)">
+        <div style="font-size:60px;margin-bottom:16px">🔍</div>
+        <h3>${t('noResults')}</h3>
+        <p style="margin-top:8px">${t('tryDifferent')}</p>
+      </div>
+    `;
+    return;
+  }
+  
+  const movieTitle = (m) => currentLang === 'ckb' ? m.titleKu : m.title;
+  
+  document.getElementById('searchResults').innerHTML = `
+    <div class="ai-response">
+      <div style="font-size:13px;color:var(--gold);letter-spacing:2px;margin-bottom:12px">${t('aiSuggest')}</div>
+      <div style="padding:12px;background:rgba(0,0,0,0.3);border-radius:8px;border-right:3px solid var(--gold);margin-bottom:14px">
+        🔍 ${query}
+      </div>
+      <p style="font-size:14px;line-height:1.7">
+        ${t('aiFound')} ${results.length} → "${movieTitle(results[0])}"
+      </p>
+    </div>
+    <div class="results-grid">
+      ${results.map(r => `
+        <div class="result-card" onclick="openMovie(${r.id})">
+          <div class="match-badge">${Math.min(r.score, 99)}% ${t('matchPercent')}</div>
+          <img src="${r.poster}" alt="${r.title}" style="width:100%;aspect-ratio:2/3;object-fit:cover">
+          <div style="padding:12px">
+            <div style="font-size:14px;font-weight:600;margin-bottom:6px">${movieTitle(r)}</div>
+            <div style="font-size:11px;color:rgba(255,255,255,0.7)">⭐ ${r.rating} • ${r.year}</div>
+          </div>
+        </div>
+      `).join('')}
+    </div>
+  `;
+}
+
+let recognition;
+function toggleVoiceSearch() {
+  const btn = document.getElementById('voiceBtn');
+  
+  if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
+    return showToast(t('voiceNotSupported'));
+  }
+  
+  if (btn.classList.contains('recording')) {
+    if (recognition) recognition.stop();
+    btn.classList.remove('recording');
+    return;
+  }
+  
+  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+  recognition = new SpeechRecognition();
+  // Use language code based on current language
+  recognition.lang = currentLang === 'ckb' ? 'ckb-IR' : currentLang === 'ar' ? 'ar-SA' : 'en-GB';
+  recognition.continuous = false;
+  
+  btn.classList.add('recording');
+  recognition.start();
+  showToast(t('voiceListening'));
+  
+  recognition.onresult = (e) => {
+    document.getElementById('searchInput').value = e.results[0][0].transcript;
+    btn.classList.remove('recording');
+    performSearch();
+  };
+  
+  recognition.onerror = () => {
+    btn.classList.remove('recording');
+    showToast(t('voiceError'));
+  };
+  
+  recognition.onend = () => btn.classList.remove('recording');
+}
+
+// 💳 PAYMENT PAGE
+function buildPaymentPage() {
+  // Use full 6 plans with translated names
+  const ALL_PLANS = [
+    { months: 1, price: 5000, coins: 100, badge: "🌱", name: t('planStarter'), popular: false },
+    { months: 3, price: 15000, coins: 500, badge: "🚀", name: t('planAdvanced'), popular: false },
+    { months: 6, price: 25000, coins: 1500, badge: "💎", name: t('planPro'), popular: true },
+    { months: 9, price: 30000, coins: 2500, badge: "🌟", name: t('planElite'), popular: false },
+    { months: 10, price: 34000, coins: 3000, badge: "⚡", name: t('planSuper'), popular: false },
+    { months: 12, price: 39000, coins: 5000, badge: "👑", name: t('planLegend'), popular: false }
+  ];
+  
+  const currency = currentLang === 'ar' ? 'د.ع' : currentLang === 'en' ? 'IQD' : 'د.ع';
+  
+  document.getElementById('paymentContent').innerHTML = `
+    <div class="payment-page">
+      <button class="back-btn" onclick="showPage('page-home')" style="position:relative;top:0;right:0;display:inline-block;margin-bottom:20px">${t('back')}</button>
+      
+      <div class="payment-hero">
+        <div style="display:inline-block;padding:6px 14px;background:rgba(255,215,0,0.15);border:1px solid rgba(255,215,0,0.3);border-radius:50px;font-size:11px;color:var(--gold);letter-spacing:2px;margin-bottom:16px">👑 PREMIUM</div>
+        <h1>${t('premiumTitle')} <span class="accent">${t('goldenPlans')}</span></h1>
+        <p style="font-size:15px;color:rgba(255,255,255,0.85);margin-top:10px">${t('choosePlan')}</p>
+      </div>
+      
+      <!-- Contact Notice -->
+      <div class="contact-notice-payment">
+        <h3>${t('importantContact')}</h3>
+        <p>
+          <strong>${t('contactPay')}</strong>
+        </p>
+        <div class="contact-apps-grid">
+          <a href="https://t.me/+9647515361928" target="_blank" class="contact-app-link">
+            📞 Telegram<br><strong style="color:var(--gold)">07515361928</strong>
+          </a>
+          <a href="https://wa.me/9647515361928" target="_blank" class="contact-app-link">
+            💬 WhatsApp<br><strong style="color:var(--gold)">07515361928</strong>
+          </a>
+          <a href="viber://chat?number=%2B9647515361928" class="contact-app-link">
+            📱 Viber<br><strong style="color:var(--gold)">07515361928</strong>
+          </a>
+          <a href="https://m.me/" target="_blank" class="contact-app-link">
+            💭 Messenger<br><strong style="color:var(--gold)">07515361928</strong>
+          </a>
+        </div>
+        <p style="margin-top:14px;padding:10px;background:rgba(0,0,0,0.4);border-radius:8px;font-size:12px;color:var(--gold)">
+          ${t('payMethods')} <strong>07515361928</strong>
+        </p>
+      </div>
+      
+      <div class="plans-grid" style="grid-template-columns:repeat(auto-fit,minmax(250px,1fr))">
+        ${ALL_PLANS.map(p => `
+          <div class="plan-card ${p.popular ? 'popular' : ''}">
+            ${p.popular ? `<div class="popular-tag">${t('bestValue')}</div>` : ''}
+            <div style="font-size:11px;color:var(--gold);letter-spacing:3px;margin-bottom:6px">${p.badge} ${p.name}</div>
+            <div class="plan-name">${p.months} ${t('months')}</div>
+            <div class="plan-price-row">
+              <span class="plan-price">${p.price.toLocaleString()}</span>
+              <span class="plan-currency">${currency}</span>
+            </div>
+            <ul class="plan-features">
+              <li>✅ ${t('aiSearch')}</li>
+              <li>✅ +${p.coins.toLocaleString()} ${t('coinGift')}</li>
+              <li>✅ ${t('offlineDownload')}</li>
+              <li>✅ ${p.months > 6 ? t('supportVIP') : t('support247')}</li>
+            </ul>
+            <button class="plan-btn" onclick="buyPlan(${p.months}, ${p.price}, ${p.coins})">
+              ${t('buyNow')}
+            </button>
+          </div>
+        `).join('')}
+      </div>
+      
+      <div style="background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.3);border-radius:12px;padding:16px;margin-top:24px;text-align:center">
+        <p style="font-size:13px;color:#ef4444;font-weight:600">
+          ${t('paymentWarning')}
+        </p>
+      </div>
+    </div>
+  `;
+}
+
+function buyPlan(months, price, planCoins) {
+  isPremium = true;
+  coins += planCoins;
+  saveState();
+  buildNavbar();
+  showModal(t('congrats'), `${months} ${t('planActivated')} ${planCoins} ${t('coinsAddedDesc')}`);
+}
+
+// 🪙 COINS PAGE
+function buildCoinsPage() {
+  const today = new Date().toDateString();
+  const claimedToday = lastClaimedDate === today;
+  
+  document.getElementById('coinsContent').innerHTML = `
+    <div class="coin-page">
+      <button class="back-btn" onclick="showPage('page-home')" style="position:relative;top:0;right:0;display:inline-block;margin-bottom:20px">${t('back')}</button>
+      
+      <div class="balance-card">
+        <div class="balance-icon">🪙</div>
+        <div class="balance-info">
+          <div class="balance-label">${t('yourCoins')}</div>
+          <div class="balance-amount" id="coinBalance">${coins.toLocaleString()}</div>
+        </div>
+      </div>
+      
+      <div class="reward-section">
+        <h2 class="section-h2">${t('dailyRewards')}</h2>
+        <p class="section-p">${t('dailyDesc')}</p>
+        
+        <div class="days-grid">
+          ${DAILY_REWARDS.map((reward, i) => {
+            const day = i + 1;
+            const completed = dailyStreak >= day;
+            const current = dailyStreak === day - 1 && !claimedToday;
+            return `
+              <div class="day-card ${completed ? 'completed' : ''} ${current ? 'current' : ''}">
+                <div class="day-num">${t('day')} ${day}</div>
+                <div class="day-icon">${completed ? '✓' : '🎁'}</div>
+                <div class="day-reward">${reward}</div>
+                <div class="day-label">${t('coinsLabel')}</div>
+              </div>
+            `;
+          }).join('')}
+        </div>
+        
+        <button 
+          class="btn ${claimedToday ? 'btn-secondary' : 'btn-primary'} btn-block" 
+          onclick="claimDailyReward()" 
+          ${claimedToday ? 'disabled' : ''}
+        >
+          ${claimedToday ? t('alreadyClaimed') : `${t('claimReward')} ${DAILY_REWARDS[dailyStreak] || DAILY_REWARDS[0]}`}
+        </button>
+      </div>
+      
+      <div class="earn-section">
+        <h2 class="section-h2">${t('earnCoins')}</h2>
+        <div class="earn-grid">
+          <div class="earn-card">
+            <div class="earn-icon">⏱️</div>
+            <h3>${t('earnWatch20')}</h3>
+            <div class="earn-amount">+30</div>
+          </div>
+          <div class="earn-card">
+            <div class="earn-icon">🎬</div>
+            <h3>${t('earnWatch40')}</h3>
+            <div class="earn-amount">+60</div>
+          </div>
+          <div class="earn-card">
+            <div class="earn-icon">🎭</div>
+            <h3>${t('earnWatch1')}</h3>
+            <div class="earn-amount">+150</div>
+          </div>
+          <div class="earn-card">
+            <div class="earn-icon">🌟</div>
+            <h3>${t('earnWatch2')}</h3>
+            <div class="earn-amount">+200</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="exchange-section">
+        <h2 class="section-h2">${t('exchange')}</h2>
+        <p class="section-p">${t('exchangeDesc')}</p>
+        
+        <div class="exchange-grid">
+          ${[
+            {coins: 10000, days: '1-3'},
+            {coins: 20000, days: '3-8'},
+            {coins: 30000, days: '8-12'},
+            {coins: 40000, days: '12-15'}
+          ].map(r => `
+            <div class="exchange-card">
+              <div class="exchange-coins">🪙 ${r.coins.toLocaleString()}</div>
+              <div class="exchange-arrow">↓</div>
+              <div class="exchange-days">${r.days} ${t('days')} 💎</div>
+              <button class="plan-btn" onclick="exchangeCoins(${r.coins}, '${r.days}')" ${coins < r.coins ? 'disabled style="opacity:0.5"' : ''}>
+                ${coins >= r.coins ? t('exchangeBtn') : t('notEnough')}
+              </button>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function claimDailyReward() {
+  const today = new Date().toDateString();
+  if (lastClaimedDate === today) return;
+  
+  const reward = DAILY_REWARDS[dailyStreak] || DAILY_REWARDS[0];
+  coins += reward;
+  dailyStreak = (dailyStreak + 1) % 7;
+  lastClaimedDate = today;
+  saveState();
+  
+  showToast(`🎉 +${reward} ${t('coinReceived')}! ${t('streak')}: ${dailyStreak}/7`);
+  buildCoinsPage();
+  buildNavbar();
+}
+
+function exchangeCoins(amount, days) {
+  if (coins < amount) return;
+  
+  const [min, max] = days.split('-').map(Number);
+  const randomDays = Math.floor(Math.random() * (max - min + 1)) + min;
+  
+  coins -= amount;
+  isPremium = true;
+  saveState();
+  
+  showModal(t('success'), `${randomDays} ${t('daysReceived')} ${amount.toLocaleString()} ${t('coinsUsed')}`);
+  buildCoinsPage();
+  buildNavbar();
+}
+
+// 👑 ADMIN PAGE
+function buildAdminPage() {
+  if (!isAdmin) return;
+  
+  document.getElementById('adminContent').innerHTML = `
+    <div class="admin-page">
+      <aside class="admin-sidebar">
+        <div class="admin-sidebar-title">👑 ADMIN</div>
+        <button class="admin-nav-item active" onclick="showAdminSection('overview')" id="adm-overview">📊 Overview</button>
+        <button class="admin-nav-item" onclick="showAdminSection('users')" id="adm-users">👥 بەکارهێنەرەکان</button>
+        <button class="admin-nav-item" onclick="showAdminSection('movies')" id="adm-movies">🎬 ناوەڕۆک</button>
+        <button class="admin-nav-item" onclick="showAdminSection('payments')" id="adm-payments">💳 پارەدانەکان</button>
+      </aside>
+      
+      <div class="admin-content">
+        <div id="adminSection"></div>
+      </div>
+    </div>
+  `;
+  
+  showAdminSection('overview');
+}
+
+function showAdminSection(section) {
+  document.querySelectorAll('.admin-nav-item').forEach(b => b.classList.remove('active'));
+  const btn = document.getElementById(`adm-${section}`);
+  if (btn) btn.classList.add('active');
+  
+  let html = '';
+  
+  if (section === 'overview') {
+    html = `
+      <h1>📊 کورتەی گشتی</h1>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon-lg">👥</div>
+          <div class="stat-value">847</div>
+          <div class="stat-label-sm">بەکارهێنەر</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon-lg">🎬</div>
+          <div class="stat-value">${MOVIES.length}</div>
+          <div class="stat-label-sm">ناوەڕۆک</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon-lg">💳</div>
+          <div class="stat-value">23</div>
+          <div class="stat-label-sm">پارەدان</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon-lg">💰</div>
+          <div class="stat-value">485K</div>
+          <div class="stat-label-sm">داهات (د.ع)</div>
+        </div>
+      </div>
+      
+      <div style="background:rgba(20,20,20,0.6);border:1px solid rgba(255,215,0,0.15);border-radius:14px;padding:24px;margin-top:24px">
+        <h3 style="color:var(--gold);margin-bottom:16px">🎯 چالاکی کۆتایی</h3>
+        ${[
+          { user: 'ئاراس م.', action: 'فیلمی Dune بینی', time: '2 خولەک پێش ئێستا' },
+          { user: 'سارا ع.', action: 'پلانی 6 مانگی کڕی', time: '15 خولەک پێش' },
+          { user: 'هاوار ر.', action: 'هەژمار دروست کرد', time: '1 کاتژمێر پێش' },
+          { user: 'دیار م.', action: 'دیاری ڕۆژانە وەرگرت', time: '2 کاتژمێر پێش' }
+        ].map(a => `
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:12px;border-bottom:1px solid rgba(255,255,255,0.05)">
+            <div>
+              <strong>${a.user}</strong>
+              <span style="color:rgba(245,245,245,0.6);font-size:13px"> - ${a.action}</span>
+            </div>
+            <span style="font-size:12px;color:rgba(245,245,245,0.4)">${a.time}</span>
+          </div>
+        `).join('')}
+      </div>
+    `;
+  } else if (section === 'users') {
+    html = `
+      <h1>👥 بەکارهێنەرەکان</h1>
+      <div class="data-table">
+        <table>
+          <thead>
+            <tr><th>ناو</th><th>ئیمەیڵ</th><th>کۆین</th><th>هەژمار</th><th>کردارەکان</th></tr>
+          </thead>
+          <tbody>
+            ${[
+              { name: 'ئاراس محەمەد', email: 'aras@gmail.com', coins: 1250, premium: true },
+              { name: 'سارا عوسمان', email: 'sara@gmail.com', coins: 850, premium: true },
+              { name: 'هاوار ڕەزا', email: 'hawar@gmail.com', coins: 320, premium: false },
+              { name: 'دیار محەمەد', email: 'dyar@gmail.com', coins: 5400, premium: true },
+              { name: 'ڕۆژان ئاکام', email: 'rojan@gmail.com', coins: 100, premium: false }
+            ].map(u => `
+              <tr>
+                <td>${u.name}</td>
+                <td style="color:rgba(245,245,245,0.6)">${u.email}</td>
+                <td style="color:var(--gold)">${u.coins}</td>
+                <td>${u.premium ? '<span style="color:var(--gold)">💎 Premium</span>' : '<span style="color:rgba(245,245,245,0.5)">خۆڕایی</span>'}</td>
+                <td>
+                  <button class="btn-sm btn-success" onclick="showToast('💎 Premium بەخشرا')">💎</button>
+                  <button class="btn-sm btn-danger" onclick="showToast('🚫 Ban کرا')">🚫</button>
+                </td>
+              </tr>
+            `).join('')}
+          </tbody>
+        </table>
+      </div>
+    `;
+  } else if (section === 'movies') {
+    html = `
+      <h1>🎬 ناوەڕۆک</h1>
+      <div class="data-table">
+        <table>
+          <thead>
+            <tr><th>پۆستەر</th><th>سەردێڕ</th><th>ساڵ</th><th>جۆر</th><th>Premium</th><th>کردار</th></tr>
+          </thead>
+          <tbody>
+            ${MOVIES.map(m => `
+              <tr>
+                <td><img src="${m.poster}" style="width:40px;height:60px;object-fit:cover;border-radius:6px"></td>
+                <td>${m.titleKu}</td>
+                <td>${m.year}</td>
+                <td>${m.type}</td>
+                <td>${m.isPremium ? '💎' : '🆓'}</td>
+                <td>
+                  <button class="btn-sm btn-success" onclick="showToast('✏️ دەستکاری')">✏️</button>
+                  <button class="btn-sm btn-danger" onclick="showToast('🗑️ سڕایەوە')">🗑️</button>
+                </td>
+              </tr>
+            `).join('')}
+          </tbody>
+        </table>
+      </div>
+    `;
+  } else if (section === 'payments') {
+    html = `
+      <h1>💳 پارەدانەکان</h1>
+      ${[
+        { user: 'ئاراس محەمەد', amount: 25000, plan: '6 مانگ', code: 'XK4-AB2C', phone: '0750...', status: 'pending' },
+        { user: 'سارا عوسمان', amount: 39000, plan: '12 مانگ', code: 'YM7-DE5F', phone: '0751...', status: 'pending' },
+        { user: 'هاوار ڕەزا', amount: 5000, plan: '1 مانگ', code: 'ZN9-GH8I', phone: '0770...', status: 'approved' }
+      ].map(p => `
+        <div style="background:linear-gradient(145deg,rgba(28,28,28,0.6),rgba(20,20,20,0.8));border:1px solid ${p.status === 'pending' ? 'rgba(255,215,0,0.3)' : 'rgba(34,197,94,0.3)'};border-radius:12px;padding:18px;margin-bottom:14px;display:flex;gap:16px;align-items:center">
+          <div style="font-size:28px">${p.status === 'pending' ? '⏳' : '✅'}</div>
+          <div style="flex:1">
+            <h4 style="font-size:15px;margin-bottom:6px">${p.user}</h4>
+            <div style="display:flex;gap:14px;flex-wrap:wrap;font-size:12px;color:rgba(245,245,245,0.6)">
+              <span>💰 ${p.amount.toLocaleString()} د.ع</span>
+              <span>📅 ${p.plan}</span>
+              <span>🎟️ ${p.code}</span>
+              <span>📱 ${p.phone}</span>
+            </div>
+          </div>
+          ${p.status === 'pending' ? `
+            <div style="display:flex;gap:8px">
+              <button class="btn-sm btn-success" onclick="showToast('✅ قبوڵ کرا')">✓ قبوڵکردن</button>
+              <button class="btn-sm btn-danger" onclick="showToast('❌ ڕەت کرایەوە')">✕ ڕەتکردنەوە</button>
+            </div>
+          ` : ''}
+        </div>
+      `).join('')}
+    `;
+  }
+  
+  document.getElementById('adminSection').innerHTML = html;
+}
+</script>
+<script>
+// Register Service Worker for PWA
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('sw.js')
+      .then(reg => console.log('✅ PWA ready:', reg.scope))
+      .catch(err => console.log('❌ SW failed:', err));
+  });
+}
+</script>
+</body>
+</html>
